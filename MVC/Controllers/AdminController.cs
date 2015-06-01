@@ -71,11 +71,11 @@ namespace MVC.Controllers
 
 		// POST: Test/Edit/5
 		[HttpPost]
-		public ActionResult Edit(int id, FormCollection collection)
+		public async Task<ActionResult> Edit(int id, BookModel model)
 		{
 			try
 			{
-				// TODO: Add update logic here
+				var book = await apiModelBook.UpdateBook("api/APIDbBook/", id.ToString(), model);
 
 				return RedirectToAction("Index");
 			}

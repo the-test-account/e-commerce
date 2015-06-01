@@ -36,7 +36,7 @@ namespace MVC.Models
 				BaseAddress = new Uri(baseUri + path+id),
 				Timeout = TimeSpan.FromSeconds(60),
 			};
-			var test = baseUri + path +id;
+			
 			try
 			{
 				
@@ -55,6 +55,34 @@ namespace MVC.Models
 
 			return null;
 		}
+		private async Task<T> UpdateInfoFromWebApi<U>(string path, string id, U model)
+		{
+			var httpClient = new System.Net.Http.HttpClient
+			{
+				BaseAddress = new Uri(baseUri + path+id),
+				Timeout = TimeSpan.FromSeconds(60),
+			};
+			var test = baseUri + path +id;
+			try
+			{
+				
+				
+				var response = await httpClient.PutAsXmlAsync("", model);
+				response.EnsureSuccessStatusCode();
+				if (response.IsSuccessStatusCode)
+				{
+					return response.Content.ReadAsAsync<T>().Result;
+				}
+			}
+
+			catch (Exception ex)
+			{
+
+			}
+
+			return null;
+		}
+
 
 		private Uri SaveInfoToWebApi<U>(string path, U model)
 		{
@@ -170,6 +198,11 @@ namespace MVC.Models
 			var contents = await response.Content.ReadAsStringAsync();
 
 			return contents;
+		}
+
+		public async Task<BookModel> UpdateBook(string path, string id, BookModel book)
+		{
+			return await UpdateInfoFromWebApi(path, id, book) as BookModel;
 		}
 
 		

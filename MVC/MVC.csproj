@@ -222,9 +222,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\_ViewStart.cshtml" />
-    <Content Include="Views\Admin\ListBooksView.cshtml" />
     <Content Include="Views\Admin\EditBook.cshtml" />
     <Content Include="Views\Admin\DeleteBookView.cshtml" />
+    <Content Include="Views\Admin\ListBooksView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

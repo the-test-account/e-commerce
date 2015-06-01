@@ -38,14 +38,14 @@ namespace Entities
 		[Display(Name = "Finns i lager:")]
 		public int QuantityInStock { get; set; }
 	
-		public virtual FormatModel Format { get; set; }
-		public virtual LanguageModel Language { get; set; }
-		public virtual PublisherModel Publisher { get; set; }
-		public virtual List<AuthorModel> Authors { get; set; }
-		public virtual List<GenreModel> Genres { get; set; }
+		public FormatModel Format { get; set; }
+		public LanguageModel Language { get; set; }
+		public PublisherModel Publisher { get; set; }
+		public List<AuthorModel> Authors { get; set; }
+		public List<GenreModel> Genres { get; set; }
 		public virtual ICollection<OrderDetailsModel> OrderDetails { get; set; }
-		public virtual List<ReaderModel> Readers { get; set; }
-		public virtual SeriesModel Series { get; set; }
-		public List<BookModel> TopFiveBooks { get; set; }
+		public List<ReaderModel> Readers { get; set; }
+		public SeriesModel Series { get; set; }
+		
 	}
 }
