@@ -2,6 +2,7 @@
 using Entities;
 using MVC.Models;
 using MVC.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -23,7 +24,8 @@ namespace MVC.Controllers
 			var model = new StartPageViewModel();
 			apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks","?");
 			model.BookList = CacheHelper.GetAllBooks();
-			model.TopFive = apiModelBook.TopFiveBooks;	
+			model.TopFive = apiModelBook.TopFiveBooks;
+
 			return View(model);
 		}
 		
