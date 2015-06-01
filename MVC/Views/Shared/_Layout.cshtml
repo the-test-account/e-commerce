@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Book On Click</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -87,8 +87,7 @@
                     
 
                   
-                    <li>@Html.ActionLink("Get info from Adlibris", "GetInfoFromAdlibris", "Home")</li>
-                    <li class="divider"></li>
+                
                     <li class="has-dropdown not-click " id="cart">@Html.Partial("_CartWidgetView")</li>
 
          
@@ -135,7 +134,7 @@
     @RenderSection("scripts", required: false)
 
     <script src="~/Scripts/slider.js"></script>
-    <input type="hidden" id="hdnSession" data-value="@Request.RequestContext.HttpContext.Session["cart"]" />
+    
 
 </body>
 </html>
