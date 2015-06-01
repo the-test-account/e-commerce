@@ -1,0 +1,14 @@
+﻿@model MVC.ViewModel.ShoppingCartViewModel
+
+<div>
+    <div style="float:left">Varukorg</div>
+@foreach (var item in Model.Cart.Items)
+{
+    <div>@((item.Quantity * item.Book.Price).ToString("0.00"))</div>
+}
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

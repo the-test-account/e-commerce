@@ -1,0 +1,231 @@
+﻿@model MVC.ViewModel.BookDetailsAndSuggestionsViewModel
+
+@{
+    var cart = Session["Cart"] as BusinessLayer.ShoppingCartModel;
+    int bookInCart = 0;
+    if (cart != null)
+    {
+        bookInCart = cart.GetTotalBookInCart(Model.Book.ISBN);
+
+    }
+
+}
+
+
+
+
+<div id="divList">
+    <div class="row">
+        <hr>
+        <div class="large-2 columns">
+            <img src="http://placehold.it/400x300&text=[img]">
+            <br>
+            <img src="http://placehold.it/400x300&text=[img]">
+            <br>
+            <img src="http://placehold.it/400x300&text=[img]">
+            <br>
+            <img src="http://placehold.it/400x300&text=[img]">
+        </div>
+        <div class="large-3 columns">
+            <img src="@Html.DisplayFor(model => model.Book.ImagePath)">
+
+            @if (Model.Book.QuantityInStock == 0)
+            {
+                <div style="color:red">
+                    <div style="float:left; margin-right:10px;">
+                        @Html.DisplayNameFor(model => model.Book.QuantityInStock)
+                    </div>
+
+                    <div>
+                        @Html.DisplayFor(model => model.Book.QuantityInStock)
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="color:green">
+                    <div style="float:left; margin-right:10px;">
+                        @Html.DisplayNameFor(model => model.Book.QuantityInStock)
+                    </div>
+
+                    <div id="inStock">
+                        @(Model.Book.QuantityInStock - bookInCart)
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="large-7 columns">
+            <h4>@Html.DisplayFor(model => model.Book.Title)</h4>
+            av @foreach (var item in Model.Book.Authors)
+            {
+
+                <h3 class="title"> @Html.DisplayFor(modelItem => item.DisplayFullName),</h3>
+
+            }
+            <h3 class="title">  @Html.DisplayFor(model => model.Book.Format.Name), @Html.DisplayFor(model => model.Book.Language.Name), @Html.DisplayFor(model => model.Book.PublishingDate.Year)</h3>
+            <h3 class="title">     </h3>
+            <h3 class="title">     </h3>
+
+
+            <div><h3 class="price-detail-look">@Html.DisplayFor(model => model.Book.Price) kr   </h3></div>
+            @if (Model.Book.QuantityInStock == 0)
+            {
+                <button class=" fa fa-frown-o cart"></button>
+            }
+            else
+            {
+
+                using (Ajax.BeginForm("AddToCartWidget", "ShoppingCart", new { id = Model.Book.Id },
+                new AjaxOptions { UpdateTargetId = "cart", OnComplete = "updateCart(" + @Model.Book.Id + ")" }))
+                {
+                    if (Model.Book.QuantityInStock - bookInCart == 0)
+                    {
+                        <div id="Shop">
+                            <button class="small button ">Tillfälligt slut</button>
+                            </div>
+                            }
+                            else
+                            {
+                            <div id="Shop">
+                                @Html.HiddenFor(x => x.BookId)
+                                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                <button id="@Model.Book.Id-Add" class="small button addToCart" data-bookincart=@bookInCart data-bookinstock=@(Model.Book.QuantityInStock - bookInCart)>Lägg i varukorg</button>
+
+
+                            </div>
+                            }
+
+                            }
+
+
+                            }
+
+
+                        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="large-6 columns " style="height:200px; overflow:scroll;">
+
+            <p>@Html.DisplayFor(model => model.Book.Description)</p>
+        </div>
+        <div class="large-6 columns">
+            <table>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Book.PageNumber)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Book.PageNumber) sidor
+                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Book.PublishingDate)
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Book.PublishingDate.Year)
+
+
+                    <th>
+                        @Html.DisplayName("Författare:")
+                    </th>
+
+                    <td>
+                        @foreach (var item in Model.Book.Authors)
+                        {
+                            <div>
+
+                                @Html.DisplayFor(modelItem => item.DisplayFullName),
+
+                            </div>
+
+                        }
+                    </td>
+
+
+
+                </tr>
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Book.ISBN)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Book.ISBN)
+                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Book.Publisher.Name)
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Book.Publisher.Name)
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Book.Weight)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Book.Weight) gr
+                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Book.Language.Name)
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Book.Language.Name)
+                    </td>
+                    <th>
+                        @Html.DisplayName("Genre")
+                    </th>
+
+                    <td>
+                        @foreach (var item in Model.Book.Genres)
+                        {
+
+                            <h3 class="title"> @Html.DisplayFor(modelItem => item.Name)</h3>
+
+                        }
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <hr>
+        <div class="large-12 columns">
+            <h4>You might also like:</h4>
+            <img src="http://placehold.it/200x150&text=[img]">
+            <img src="http://placehold.it/200x150&text=[img]">
+            <img src="http://placehold.it/200x150&text=[img]">
+            <img src="http://placehold.it/200x150&text=[img]">
+        </div>
+    </div>
+                            @*<table class="table">
+
+
+                                    @foreach (var item in Model.Suggestions)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ImagePath)
+                                            </td>
+
+                                        </tr>
+                                    }
+
+                                </table>*@
+
+                    </div>

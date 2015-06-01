@@ -1,0 +1,32 @@
+﻿@{
+    var cart = Session["Cart"] as BusinessLayer.ShoppingCartModel;
+    
+}
+
+@if (cart != null)
+{
+    @Ajax.ActionLink("Varukorg(" + @cart.TotalQuantity + ")", "Index", "ShoppingCart", null,
+                                    new AjaxOptions { UpdateTargetId = "divList" })
+    <ul class="dropdown" id="cart">
+        @foreach (var item in cart.Items)
+        {
+            <li>
+                @Ajax.ActionLink(item.Book.Title + "(" + item.Quantity + ")", "Details", new { id = item.Book.Id },
+                                    new AjaxOptions { UpdateTargetId = "divList" })
+
+            </li>
+
+        }
+        <li>
+            @Ajax.ActionLink("Summa: " + @cart.GetCartTotal().ToString("0.00"), "Index", "ShoppingCart", null,
+                                 new AjaxOptions { UpdateTargetId = "divList" }, new {style="font-size:large"})
+    </li>
+       
+
+    </ul>
+}
+else
+{
+    @Ajax.ActionLink("Varukorg", "Index", "ShoppingCart", null,
+                                    new AjaxOptions { UpdateTargetId = "divList" })
+}

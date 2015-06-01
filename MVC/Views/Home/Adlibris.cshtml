@@ -1,0 +1,13 @@
+﻿
+
+@{
+    ViewBag.Title = "Info från Adlibris";
+}
+
+<h2>Info från Adlibris</h2>
+@using (Html.BeginForm("GetInfoFromAdlibris", "Home"))
+{
+    @Html.TextBox("isbn")
+    <input type="submit" value="isbn" />
+}
+

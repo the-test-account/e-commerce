@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a1cf54f46169496183bd506c7ae62473" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="MagicBooksDBModel.Address" Width="1.5" PointX="3.75" PointY="19.375" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Author" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Book" Width="1.5" PointX="3" PointY="2.125" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Contact" Width="1.5" PointX="3.75" PointY="11.125" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.DeliveryType" Width="1.5" PointX="3.75" PointY="17" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Format" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Genre" Width="1.5" PointX="5.25" PointY="2.625" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Language" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Order" Width="1.5" PointX="6" PointY="14.5" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.OrderDetail" Width="1.5" PointX="8.25" PointY="3.625" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.PaymentType" Width="1.5" PointX="3.75" PointY="14.625" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Publisher" Width="1.5" PointX="0.75" PointY="14.25" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Reader" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.Series" Width="1.5" PointX="0.75" PointY="9.375" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Contact_Address" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Order_Address" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Book_Format" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Book_Language" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Book_Publisher" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Book_Series" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_OrderDetails_Book" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Order_Contact" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Order_DeliveryType" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_Order_PaymentType" />
+        <AssociationConnector Association="MagicBooksDBModel.FK_OrderDetails_Order" />
+        <AssociationConnector Association="MagicBooksDBModel.AuthorBook" />
+        <AssociationConnector Association="MagicBooksDBModel.BookGenre" />
+        <AssociationConnector Association="MagicBooksDBModel.ReaderInBook" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

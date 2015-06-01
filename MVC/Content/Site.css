@@ -1,0 +1,142 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+#alert {
+    color:red;
+}
+
+button.cart{
+    padding:0.6rem;
+     background-color:#ccb400; 
+}
+
+button.price{
+    padding: 0.5rem 0.5rem 0.5rem 1.6rem;
+    display: block;
+  float: left;
+}
+
+h3.title{
+      overflow: hidden;
+  line-height: 1.26;
+  font-size: .82714rem;
+    max-height: 2.4em;
+  text-overflow: ellipsis;
+  margin: 5px 0px 5px 0px;
+  height:30px;
+}
+h3.name{
+     line-height: 1.26;
+  font-size: .82714rem;
+   margin: 5px 0px 5px 0px;
+}
+button.delete{
+    padding:5px;
+    font-size:0.875rem;
+    text-decoration-line:underline;
+    background-color: transparent;
+   color:black;
+   
+    
+}
+h3.price-detail-look{
+    color:red;
+    
+}
+li.display{
+    padding-top:10px;
+}
+ul.dropdown-custom{
+    height:10px;
+    line-height:1px;
+}
+div.container{
+    width:100%;
+    position:relative;
+    padding:3px 0px 5px 0px;
+    float:left
+}
+
+.f-dropdown.content ul li{
+    float:none;
+  }
+  .f-dropdown:after{
+    border-style: none !important;
+  }
+img.cover-height{
+    vertical-align:bottom;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#loadingDiv {
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: 1100;
+   background-color: white;
+   opacity: .6;
+}
+
+.ajax-loader {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   margin-left: -32px; /* -1 * image width / 2 */
+   margin-top: -32px; /* -1 * image height / 2 */
+   display: block;
+}
+
+
+div.reklam{
+background-color:red;
+
+}
+textarea {
+   resize: none;
+}
+
+div.logo{
+    margin-top:-50px;
+}
+
+nav.custom{
+    margin-top:5px;
+}
+
+div.slider-background {
+    background-color:#919191; 
+    /*filter: alpha(opacity=60);
+    -moz-opacity: 0.6;
+  
+  opacity: 0.6;*/
+
+}
+div.slider {
+  
+}
+
+  .long {
+    min-width:930px;
+  }

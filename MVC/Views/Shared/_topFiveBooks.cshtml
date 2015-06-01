@@ -1,0 +1,25 @@
+﻿@using MVC.ViewModel
+@model MVC.ViewModel.StartPageViewModel
+
+
+
+    <h5>Topplista</h5>
+    <ul class="small-block-grid-1">
+    @if (Model.TopFive != null)
+    {
+        foreach (var item in Model.TopFive)
+        {
+
+            <li>
+                @Ajax.ImageActionLink(item.ImagePath, "Image", "Details", new { id = item.Id },
+                    new AjaxOptions { UpdateTargetId = "divList" }, new { style = "" })
+                @Html.DisplayFor(modelItem => item.Title)
+
+            </li>
+        }
+
+    }
+
+</ul>
+
+

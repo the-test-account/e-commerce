@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    @{
+        var cart = Session["Cart"] as BusinessLayer.ShoppingCartModel;
+
+    }
+    <div  class="logo">
+        
+        
+            <a href="/Home/Index"><img src="~/Content/Images/logo small.png" /></a>
+    
+        
+    </div>
+
+    <nav class="top-bar custom"  data-topbar>
+        <ul class="title-area">
+
+            <li class="name">
+                
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+        </ul>
+        
+        <section class="top-bar-section ">
+
+            <ul class="left">
+                
+                <li>@Html.ActionLink("Om Oss", "Contact", "Home")</li>
+                <li class="divider"></li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li class="divider"></li>
+                <li>@Html.ActionLink("krokodile", "Contact", "Home")</li>
+                <li class="divider"></li>
+                <li class="has-dropdown not-click">
+                    <a href="#">Välj kategori</a>
+                    <ul class="dropdown dropdown-custom hidden-for-large-up">
+
+                        <li><label>KATEGORIER A-Ö</label></li>
+
+                        <li class="has-dropdown not-click">
+                        <li><a href="#">Biografier & Memoarer</a></li>
+                        <li><a href="#">Datorer & IT</a></li>
+                        <li><a href="#">Deckare</a></li>
+                        <li><a href="#">Djur & Natur</a></li>
+                        <li><a href="#">Ekonomi & Juridik</a></li>
+                        <li><a href="#">Familj & Hälsa</a></li>
+                        <li><a href="#">Filosofi & Religion</a></li>
+
+
+                        <li><a href="#">Dropdown Option</a></li>
+                        <li><a href="#">Dropdown Option</a></li>
+                        <li class="divider"></li>
+                        <li><label>Section Name</label></li>
+                        <li><a href="#">Dropdown Option</a></li>
+                        <li><a href="#">Dropdown Option</a></li>
+                        <li><a href="#">Dropdown Option</a></li>
+                        <li class="divider"></li>
+
+
+                    </ul>
+
+
+                <li class="divider"></li>
+                
+                <li class="has-button">
+    <a class="small button" href="#">Search</a>
+</li>
+                <li class=" search">
+                    <form>
+                        <input type="search" class="long" >
+                    </form>
+                </li>
+
+                
+                <li class="divider"></li>
+                </ul>
+                <ul class="right">
+                    
+
+                  
+                    <li>@Html.ActionLink("Get info from Adlibris", "GetInfoFromAdlibris", "Home")</li>
+                    <li class="divider"></li>
+                    <li class="has-dropdown not-click " id="cart">@Html.Partial("_CartWidgetView")</li>
+
+         
+                </ul>
+        </section>
+    </nav>
+
+    <div id="loadingDiv" loader>
+        <img src="~/Content/spinner.gif" class="ajax-loader" />
+    </div>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+
+
+    </div>
+
+    <footer class="row">
+        <div class="large-12 columns">
+            <hr />
+            <div class="row">
+                <div class="large-6 columns">
+                    <p>© </p>
+                </div>
+                <div class="large-6 columns">
+                    <ul class="inline-list right">
+                        <li><a href="#">Link 1</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/foundation")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/slider.js"></script>
+    <input type="hidden" id="hdnSession" data-value="@Request.RequestContext.HttpContext.Session["cart"]" />
+
+</body>
+</html>
