@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     var $loading = $('#loadingDiv').hide();
-   
+    $(document).foundation();
     $(document)
       .ajaxStart(function () {
           $loading.show();
