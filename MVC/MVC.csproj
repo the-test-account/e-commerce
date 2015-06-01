@@ -205,9 +205,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\Adlibris.cshtml" />
-    <Content Include="Views\Home\BookInfoView.cshtml" />
-    <Content Include="Views\Home\_ErrorMessage.cshtml" />
+    <Content Include="Views\Admin\Adlibris.cshtml" />
+    <Content Include="Views\Admin\BookInfoView.cshtml" />
+    <Content Include="Views\Shared\_ErrorMessage.cshtml" />
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Details.cshtml" />
@@ -222,6 +222,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\_ViewStart.cshtml" />
+    <Content Include="Views\Admin\ListBooksView.cshtml" />
+    <Content Include="Views\Admin\EditBook.cshtml" />
+    <Content Include="Views\Admin\DeleteBookView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
