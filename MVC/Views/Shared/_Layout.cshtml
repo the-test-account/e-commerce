@@ -35,104 +35,74 @@
                 <section class="top-bar-section ">
 
                     <ul class="left">
-                        <li class="has-dropdown hide-for-large-up">
-                            <a href="#">Main Item 1</a>
-                            <ul class="dropdown">
-                                <li><label>Section Name</label></li>
-                                <li><a href="#">Dropdown Options</a></li>
-                                <li><a href="#">Dropdown Options</a></li>
-                                <li><a href="#">Subdropdown Option</a></li>
-                                <li><a href="#">Subdropdown Option</a></li>
-                                <li><a href="#">Subdropdown Option</a></li>
-                                <li><a href="#">Dropdown Option</a></li>
-                                <li><a href="#">Dropdown Option</a></li>
-                                <li class="divider"></li>
-                                <li><label>Section Name</label></li>
-                                <li><a href="#">Dropdown Option</a></li>
-                                <li><a href="#">Dropdown Option</a></li>
-                                <li><a href="#">Dropdown Option</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">See all ?</a></li>
-                            </ul>
-                        </li>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Om Oss", "Contact", "Home")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                        <li class="divider"></li>
+                        
                         <li class="show-for-large-up">
-                            <a href="#" data-dropdown="mega-menu-1" data-options="is_hover:true">Main Item 1</a>
+                        
+                            <a href="#" data-dropdown="mega-menu-1" style="width:146px" data-options="is_hover:true" >Välj kategori</a>
                             <div id="mega-menu-1" data-dropdown-content class="large f-dropdown content row">
-                                <div class="large-6 columns">
+                                <div class="large-4 columns">
                                     <ul>
-                                        <li><label>Section Name</label></li>
-                                        <li><a href="#">Dropdown Options</a></li>
-                                        <li><a href="#">Dropdown Options</a></li>
-                                        <li><a href="#">Subdropdown Option</a></li>
-                                        <li><a href="#">Subdropdown Option</a></li>
-                                        <li><a href="#">Subdropdown Option</a></li>
-                                        <li><a href="#">Dropdown Option</a></li>
-                                        <li><a href="#">Dropdown Option</a></li>
-                                        <li class="divider"></li>
+                                        <li><label>KATEGORIER A-G</label></li>
+                                        <li><a href="#">Barnböcker</a></li>
+                                        <li><a href="#">Biografier & Memoarer</a></li>
+                                        <li><a href="#">Datorer & IT</a></li>
+                                        <li><a href="#">Deckare</a></li>
+                                        <li><a href="#">Djur & Natur</a></li>
+                                        <li><a href="#">Ekonomi & Juridik</a></li>
+                                        <li><a href="#">Familj & Hälsa</a></li>
+                                        <li><a href="#">Filosofi & Religion</a></li>
+                                        <li><a href="#">Geografiska områden</a></li>
+                                        
+
                                     </ul>
                                 </div>
-                                <div class="large-6 columns">
+                                <div class="large-4 columns">
                                     <ul>
-                                        <li><label>Section Name</label></li>
-                                        <li><a href="#">Dropdown Option</a></li>
-                                        <li><a href="#">Dropdown Option</a></li>
-                                        <li><a href="#">Dropdown Option</a></li>
+
+                                        <li><label>KATEGORIER H-O</label></li>
+                                        <li><a href="#">Hem & Trädgård</a></li>
+                                        <li><a href="#">Historia & Arkeologi</a></li>
+                                        <li><a href="#">Humor & Presentböcker</a></li>
+                                        <li><a href="#">Kokböcker</a></li>
+                                        <li><a href="#">Konst & Musik</a></li>
+                                        <li><a href="#">Litteraturvetenskap</a></li>
+                                        <li><a href="#">Medicin</a></li>
+                                        <li><a href="#">Naturvetenskap & Teknik</a></li>
+                                        <li><a href="#">Ordböcker & Språk</a></li>
+                                        
+                                        
+                                    </ul>
+                                </div>
+                                <div class="large-4 columns">
+                                    <ul>
+
+                                        
+                                        <li><label>KATEGORIER P-Ö</label></li>
+                                        <li><a href="#">Psykologi & Pedagogik</a></li>
+                                        <li><a href="#">Resor & Geografi</a></li>
+                                        <li><a href="#">Samhälle & Politik</a></li>
+                                        <li><a href="#">Serier & Grafiska romaner</a></li>
+                                        <li><a href="#">Skönlitteratur</a></li>
+                                        <li><a href="#">Sport & Fritid</a></li>
+                                        <li><a href="#">Student</a></li>
+                                        <li><a href="#">Tonår & Unga vuxna</a></li>
+                                        <li><a href="#">Uppslagsverk</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">See all ?</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-                        <li class="divider"></li>
-                        <li>@Html.ActionLink("Om Oss", "Contact", "Home")</li>
-                        <li class="divider"></li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li class="divider"></li>
-                        <li>@Html.ActionLink("krokodile", "Contact", "Home")</li>
-                        <li class="divider"></li>
-                        <li class="has-dropdown not-click">
-                            <a href="#">Välj kategori</a>
-                            <ul class="dropdown dropdown-custom hidden-for-large-up">
+                        <li class="divider" ></li>
+                        
+                      
 
-                                <li><label>KATEGORIER A-Ö</label></li>
-
-                                <li class="has-dropdown not-click">
-                                <li><a href="#">Barnböcker</a></li>
-                                <li><a href="#">Biografier & Memoarer</a></li>
-                                <li><a href="#">Datorer & IT</a></li>
-                                <li><a href="#">Deckare</a></li>
-                                <li><a href="#">Djur & Natur</a></li>
-                                <li><a href="#">Ekonomi & Juridik</a></li>
-                                <li><a href="#">Familj & Hälsa</a></li>
-                                <li><a href="#">Filosofi & Religion</a></li>
-                                <li><a href="#">Geografiska områden</a></li>
-                                <li><a href="#">Hem & Trädgård</a></li>
-                                <li><a href="#">Historia & Arkeologi</a></li>
-                                <li><a href="#">Humor & Presentböcker</a></li>
-                                <li><a href="#">Kokböcker</a></li>
-                                <li><a href="#">Konst & Musik</a></li>
-                                <li><a href="#">Litteraturvetenskap</a></li>
-                                <li><a href="#">Medicin</a></li>
-                                <li><a href="#">Naturvetenskap & Teknik</a></li>
-                                <li><a href="#">Ordböcker & Språk</a></li>
-                                <li><a href="#">Psykologi & Pedagogik</a></li>
-                                <li><a href="#">Resor & Geografi</a></li>
-                                <li><a href="#">Samhälle & Politik</a></li>
-                                <li><a href="#">Serier & Grafiska romaner</a></li>
-                                <li><a href="#">Skönlitteratur</a></li>
-                                <li><a href="#">Sport & Fritid</a></li>
-                                <li><a href="#">Student</a></li>
-                                <li><a href="#">Tonår & Unga vuxna</a></li>
-                                <li><a href="#">Uppslagsverk</a></li>
-                                <li class="divider"></li>
-
-
-                            </ul>
-
-
-                        <li class="divider"></li>
-
-                        <li class="has-button">
+                        <li class="has-button" >
                             <a class="small button" href="#">Search</a>
                         </li>
                         <li class="search">
@@ -177,7 +147,7 @@
                 <hr />
                 <div class="row">
                     <div class="large-6 columns">
-                        <p>© Book OnClick</p>
+                        <p class="footer">©@DateTime.Now.Year - Book OnClick</p>
                     </div>
                     <div class="large-6 columns">
                        

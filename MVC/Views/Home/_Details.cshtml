@@ -16,17 +16,10 @@
 
 <div id="divList">
     <div class="row">
-        <hr>
+        <br />
+
         <div class="large-2 columns">
-            <img src="http://placehold.it/400x300&text=[img]">
-            <br>
-            <img src="http://placehold.it/400x300&text=[img]">
-            <br>
-            <img src="http://placehold.it/400x300&text=[img]">
-            <br>
-            <img src="http://placehold.it/400x300&text=[img]">
-        </div>
-        <div class="large-3 columns">
+            <br />
             <img src="@Html.DisplayFor(model => model.Book.ImagePath)">
 
             @if (Model.Book.QuantityInStock == 0)
@@ -55,38 +48,39 @@
             }
 
         </div>
-        <div class="large-7 columns">
+        <div class="large-10 columns">
             <h4>@Html.DisplayFor(model => model.Book.Title)</h4>
-            av @foreach (var item in Model.Book.Authors)
-            {
-
-                <h3 class="title"> @Html.DisplayFor(modelItem => item.DisplayFullName),</h3>
-
-            }
-            <h3 class="title">  @Html.DisplayFor(model => model.Book.Format.Name), @Html.DisplayFor(model => model.Book.Language.Name), @Html.DisplayFor(model => model.Book.PublishingDate.Year)</h3>
-            <h3 class="title">     </h3>
-            <h3 class="title">     </h3>
-
-
-            <div><h3 class="price-detail-look">@Html.DisplayFor(model => model.Book.Price) kr   </h3></div>
-            @if (Model.Book.QuantityInStock == 0)
-            {
-                <button class=" fa fa-frown-o cart"></button>
-            }
-            else
-            {
-
-                using (Ajax.BeginForm("AddToCartWidget", "ShoppingCart", new { id = Model.Book.Id },
-                new AjaxOptions { UpdateTargetId = "cart", OnComplete = "updateCart(" + @Model.Book.Id + ")" }))
+            <div style="float:left; ">
+                av @foreach (var item in Model.Book.Authors)
                 {
-                    if (Model.Book.QuantityInStock - bookInCart == 0)
+
+                    <h3 class="title"> @Html.DisplayFor(modelItem => item.DisplayFullName),</h3>
+
+                }
+                <h3 class="title">  @Html.DisplayFor(model => model.Book.Format.Name), @Html.DisplayFor(model => model.Book.Language.Name), @Html.DisplayFor(model => model.Book.PublishingDate.Year)</h3>
+            </div>
+
+
+            <div style="margin-left:700px;">
+                <h3 class="price-detail-look">@Html.DisplayFor(model => model.Book.Price) kr   </h3>
+                @if (Model.Book.QuantityInStock == 0)
+                {
+                    <button class="small button ">Tillfälligt slut</button>
+                }
+                else
+                {
+
+                    using (Ajax.BeginForm("AddToCartWidget", "ShoppingCart", new { id = Model.Book.Id },
+                    new AjaxOptions { UpdateTargetId = "cart", OnComplete = "updateCart(" + @Model.Book.Id + ")" }))
                     {
-                        <div id="Shop">
-                            <button class="small button ">Tillfälligt slut</button>
+                        if (Model.Book.QuantityInStock - bookInCart == 0)
+                        {
+                            <div id="Shop">
+                                <button class="small button ">Tillfälligt slut</button>
                             </div>
-                            }
-                            else
-                            {
+                        }
+                        else
+                        {
                             <div id="Shop">
                                 @Html.HiddenFor(x => x.BookId)
                                 @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
@@ -94,25 +88,28 @@
 
 
                             </div>
-                            }
+                        }
 
-                            }
-
-
-                            }
+                    }
 
 
-                        </div>
-    </div>
+                }
 
-    <div class="row">
 
-        <div class="large-6 columns " style="height:200px; overflow:scroll;">
-
-            <p>@Html.DisplayFor(model => model.Book.Description)</p>
+            </div>
         </div>
-        <div class="large-6 columns">
-            <table>
+    </div>
+    <div class="row" style="margin-top:-220px">
+        <div class="large-2 columns"><p></p></div>
+        <div class="large-10 columns " style="height:100px; overflow:auto;">
+
+            <p class="description">@Html.DisplayFor(model => model.Book.Description)</p>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="large-2 columns"><p></p></div>
+        <div class="large-10 columns" style="margin-top:20px">
+            <table class="info" >
                 <tr>
 
                     <th>
@@ -179,18 +176,7 @@
                     <td>
                         @Html.DisplayFor(model => model.Book.Language.Name)
                     </td>
-                    <th>
-                        @Html.DisplayName("Genre")
-                    </th>
-
-                    <td>
-                        @foreach (var item in Model.Book.Genres)
-                        {
-
-                            <h3 class="title"> @Html.DisplayFor(modelItem => item.Name)</h3>
-
-                        }
-                    </td>
+                   
 
                 </tr>
 
@@ -199,7 +185,21 @@
 
         </div>
     </div>
+    <div class="row">
+        <div class="large-2 columns"><p></p></div>
+        <div class="large-10 columns" style="margin-top:20px">
+            <h3 class="title">  Genre:</h3>
+            @foreach (var item in Model.Book.Genres)
+            {
 
+                <h3 class="title" style="float:left; margin-right:5px;"> @Html.DisplayFor(modelItem => item.Name), </h3>
+
+            }
+
+
+        </div>
+
+    </div>
     <div class="row">
         <hr>
         <div class="large-12 columns">

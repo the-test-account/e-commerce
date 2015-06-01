@@ -1,25 +1,36 @@
 ﻿@using MVC.ViewModel
 @model MVC.ViewModel.StartPageViewModel
 
+@{
+    int i = 0;
+}
 
-
-    <h5>Topplista</h5>
+    <h5 class="title" style="margin-left:40px; color:darkred;">Topp 5</h5>
     <ul class="small-block-grid-1">
     @if (Model.TopFive != null)
     {
         foreach (var item in Model.TopFive)
         {
+            i = i + 1;
+            <li style="">
+         
+                <div style="float:left">
+                    <h3 class="title-top5-number">
+                        @i.
+                    </h3>
+                        <h3 class="title-top5">
 
-            <li>
-                @Ajax.ImageActionLink(item.ImagePath, "Image", "Details", new { id = item.Id },
-                    new AjaxOptions { UpdateTargetId = "divList" }, new { style = "" })
-                <h3 class="title-top5">
-                    @Ajax.ActionLink(item.Title, "Details", new { id = item.Id },
+                            @Ajax.ActionLink(item.Title, "Details", new { id = item.Id },
                                     new AjaxOptions { UpdateTargetId = "divList" })
-                </h3>
-               
-
-            </li>
+                        </h3>
+                        <h3 class="title" style="color:red"> @Html.DisplayFor(modelItem => item.Price) kr</h3>
+</div>
+                        <div>
+                            @Ajax.ImageActionLink(item.ImagePath, "Image", "Details", new { id = item.Id },
+         new AjaxOptions { UpdateTargetId = "divList" }, new { style = "width:40%;" })
+                        </div>
+<hr />
+</li>
         }
 
     }
