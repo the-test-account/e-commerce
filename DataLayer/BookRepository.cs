@@ -87,8 +87,11 @@ namespace DataLayer
 				{
 					Authors = GetBookAuthors(b.Id),
 					Description = b.Description,
-					Format = ConvertHelpers.Instance.ConvertLookUpToModel<FormatModel, Format>(b.Id, "Format", context),
-					Series = ConvertHelpers.Instance.ConvertLookUpToModel<SeriesModel, Series>(b.Id, "Series", context),
+					FormatId = b.FormatId,
+					LanguageId = b.LanguageId,
+					PublisherId = b.PublisherId,
+					Format = ConvertHelpers.Instance.ConvertDBLookUpToModelLookUp<FormatModel, Format>(b.Id, "Format", context),
+					Series = ConvertHelpers.Instance.ConvertDBLookUpToModelLookUp<SeriesModel, Series>(b.Id, "Series", context),
 					Readers = GetBookReaders(b.Id),
 					Genres = GetBookGenres(b.Id),
 					ISBN = b.ISBN,
@@ -100,8 +103,8 @@ namespace DataLayer
 					QuantityInStock = b.QuantityInStock,
 					PublishingDate = b.PublishingDate,
 					ImagePath = b.ImagePath,
-					Language = ConvertHelpers.Instance.ConvertLookUpToModel<LanguageModel, Language>(b.Id, "Language", context),
-					Publisher = ConvertHelpers.Instance.ConvertLookUpToModel<PublisherModel, Publisher>(b.Id, "Publisher", context),
+					Language = ConvertHelpers.Instance.ConvertDBLookUpToModelLookUp<LanguageModel, Language>(b.Id, "Language", context),
+					Publisher = ConvertHelpers.Instance.ConvertDBLookUpToModelLookUp<PublisherModel, Publisher>(b.Id, "Publisher", context),
 				}).ToList();
 			return books;
 		}
@@ -112,11 +115,14 @@ namespace DataLayer
 			{
 				Authors = GetBookAuthors(b.Id),
 				Readers = GetBookReaders(b.Id),
-				Series = ConvertHelpers.Instance.ConvertLookUpToModel<SeriesModel, Series>(b.Id, "Series", context),
+				Series = ConvertHelpers.Instance.ConvertDBLookUpToModelLookUp<SeriesModel, Series>(b.Id, "Series", context),
 				Description = b.Description,
-				Format = ConvertHelpers.Instance.ConvertLookUpToModel<FormatModel, Format>(b.Id, "Format", context),
+				Format = ConvertHelpers.Instance.ConvertDBLookUpToModelLookUp<FormatModel, Format>(b.Id, "Format", context),
 				Genres = GetBookGenres(b.Id),
 				ISBN = b.ISBN,
+				FormatId = b.FormatId,
+				LanguageId = b.LanguageId,
+				PublisherId = b.PublisherId,
 				PageNumber = b.PageNumber,
 				Price = b.Price,
 				Weight = b.Weight,
@@ -125,8 +131,8 @@ namespace DataLayer
 				QuantityInStock = b.QuantityInStock,
 				PublishingDate = b.PublishingDate,
 				ImagePath = b.ImagePath,
-				Language = ConvertHelpers.Instance.ConvertLookUpToModel<LanguageModel, Language>(b.Id, "Language", context),
-				Publisher = ConvertHelpers.Instance.ConvertLookUpToModel<PublisherModel, Publisher>(b.Id, "Publisher", context),
+				Language = ConvertHelpers.Instance.ConvertDBLookUpToModelLookUp<LanguageModel, Language>(b.Id, "Language", context),
+				Publisher = ConvertHelpers.Instance.ConvertDBLookUpToModelLookUp<PublisherModel, Publisher>(b.Id, "Publisher", context),
 			}).FirstOrDefault();
 			return book;
 		}
@@ -405,9 +411,7 @@ namespace DataLayer
 		public void Edit(BookModel book)
 		{
 			var bookToEdit = context.Books.Find(book.Id);
-			var dbBook =ConvertHelpers.Instance.ConvertBookModelToDBBook(book);
-			bookToEdit = dbBook;
-			context.Books.Add(bookToEdit);
+			bookToEdit = SaveEditedBook(book, bookToEdit);			
 			context.SaveChanges();
 		
 		}
@@ -417,6 +421,88 @@ namespace DataLayer
 			var bookToDelete = context.Books.Find(id);
 			context.Books.Remove(bookToDelete);
 			context.SaveChanges();
+		}
+
+		public Book SaveEditedBook(BookModel model, Book book)
+		{
+			
+				book.Id = model.Id;
+				book.Authors = ConvertModelAuthorToDBAuthor(model.Id);
+				book.Publisher = GetPublisherByName(model.Publisher.Name);
+				book.Genres = ConvertModelGenreToDBGenre(model.Id);
+				if (model.Readers!=null)
+				{
+					book.Readers = ConvertModelReaderToDBReader(model.Id);
+				}
+				book.Format = GetFormatByName(model.Format.Name);
+				book.Language = GetLanguageByName(model.Language.Name);
+				if (model.Series!=null)
+				{
+					
+					book.Series = GetSeriesByName(model.Series.Name);
+				}
+				book.Title = model.Title;
+				book.Description = model.Description;
+				book.ImagePath = model.ImagePath;
+				book.ISBN = model.ISBN;
+				book.PageNumber = model.PageNumber;
+				book.Price = model.Price;
+				book.PublishingDate = model.PublishingDate;
+				book.QuantityInStock = model.QuantityInStock;
+				book.Weight = model.Weight;
+			
+			return book;
+		}
+
+	
+		private static string ConvertGenresToString(BookModel model)
+		{
+			string genres = string.Empty;
+			foreach (var item in model.Genres)
+			{
+				genres += item.Name + ";";
+			}
+			genres = genres.Substring(0, genres.Length - 1);
+			return genres;
+		}
+
+		private static string ConvertAuthorsToString(BookModel model)
+		{
+			string authors = string.Empty;
+
+			foreach (var item in model.Authors)
+			{
+				authors += item.DisplayFullName + ";";
+			}
+			authors = authors.Substring(0, authors.Length - 1);
+			return authors;
+		}
+
+		private static string ConvertReadersToString(BookModel model)
+		{
+			string readers = string.Empty;
+
+			foreach (var item in model.Readers)
+			{
+				readers += item.DisplayFullName + ";";
+			}
+			readers = readers.Substring(0, readers.Length - 1);
+			return readers;
+		}
+
+		public List<Author> ConvertModelAuthorToDBAuthor(int id)
+		{
+			return context.Books.Where(b => b.Id == id).FirstOrDefault().Authors.ToList();
+		}
+
+		public List<Reader> ConvertModelReaderToDBReader(int id)
+		{
+			return context.Books.Where(b => b.Id == id).FirstOrDefault().Readers.ToList();
+		}
+
+		public List<Genre> ConvertModelGenreToDBGenre(int id)
+		{
+			return context.Books.Where(b => b.Id == id).FirstOrDefault().Genres.ToList();
 		}
 	}
 }

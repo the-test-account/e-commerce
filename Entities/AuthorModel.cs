@@ -18,7 +18,7 @@ namespace Entities
 		public int Id { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
-        [Display(Name = "Författare:")]
+		[Display(Name = "Författare:")]
 		public string DisplayFullName { get { return FirstName + " " + LastName; } }
 		//public virtual ICollection<Book> Books { get; set; }
 	}

@@ -17,7 +17,9 @@ namespace Entities
 		public int Id { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
-	
+
+		public string DisplayFullName { get { return FirstName + " " + LastName; } }
+
 	  //  public virtual ICollection<BookModel> Books { get; set; }
 	}
 }
