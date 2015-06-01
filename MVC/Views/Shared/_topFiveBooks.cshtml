@@ -13,7 +13,11 @@
             <li>
                 @Ajax.ImageActionLink(item.ImagePath, "Image", "Details", new { id = item.Id },
                     new AjaxOptions { UpdateTargetId = "divList" }, new { style = "" })
-                @Html.DisplayFor(modelItem => item.Title)
+                <h3 class="title-top5">
+                    @Ajax.ActionLink(item.Title, "Details", new { id = item.Id },
+                                    new AjaxOptions { UpdateTargetId = "divList" })
+                </h3>
+               
 
             </li>
         }

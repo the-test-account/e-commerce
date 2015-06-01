@@ -21,120 +21,172 @@
         
     </div>
 
-    <nav class="top-bar custom"  data-topbar>
-        <ul class="title-area">
+    <nav class="top-bar custom " data-topbar>
+      
 
-            <li class="name">
-                
-            </li>
-            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-        </ul>
-        
-        <section class="top-bar-section ">
+                <ul class="title-area">
 
-            <ul class="left">
-                
-                <li>@Html.ActionLink("Om Oss", "Contact", "Home")</li>
-                <li class="divider"></li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li class="divider"></li>
-                <li>@Html.ActionLink("krokodile", "Contact", "Home")</li>
-                <li class="divider"></li>
-                <li class="has-dropdown not-click">
-                    <a href="#">Välj kategori</a>
-                    <ul class="dropdown dropdown-custom hidden-for-large-up">
+                    <li class="name">
 
-                        <li><label>KATEGORIER A-Ö</label></li>
+                    </li>
+                    <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+                </ul>
 
+                <section class="top-bar-section ">
+
+                    <ul class="left">
+                        <li class="has-dropdown hide-for-large-up">
+                            <a href="#">Main Item 1</a>
+                            <ul class="dropdown">
+                                <li><label>Section Name</label></li>
+                                <li><a href="#">Dropdown Options</a></li>
+                                <li><a href="#">Dropdown Options</a></li>
+                                <li><a href="#">Subdropdown Option</a></li>
+                                <li><a href="#">Subdropdown Option</a></li>
+                                <li><a href="#">Subdropdown Option</a></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li class="divider"></li>
+                                <li><label>Section Name</label></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">See all ?</a></li>
+                            </ul>
+                        </li>
+                        <li class="show-for-large-up">
+                            <a href="#" data-dropdown="mega-menu-1" data-options="is_hover:true">Main Item 1</a>
+                            <div id="mega-menu-1" data-dropdown-content class="large f-dropdown content row">
+                                <div class="large-6 columns">
+                                    <ul>
+                                        <li><label>Section Name</label></li>
+                                        <li><a href="#">Dropdown Options</a></li>
+                                        <li><a href="#">Dropdown Options</a></li>
+                                        <li><a href="#">Subdropdown Option</a></li>
+                                        <li><a href="#">Subdropdown Option</a></li>
+                                        <li><a href="#">Subdropdown Option</a></li>
+                                        <li><a href="#">Dropdown Option</a></li>
+                                        <li><a href="#">Dropdown Option</a></li>
+                                        <li class="divider"></li>
+                                    </ul>
+                                </div>
+                                <div class="large-6 columns">
+                                    <ul>
+                                        <li><label>Section Name</label></li>
+                                        <li><a href="#">Dropdown Option</a></li>
+                                        <li><a href="#">Dropdown Option</a></li>
+                                        <li><a href="#">Dropdown Option</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">See all ?</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Om Oss", "Contact", "Home")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("krokodile", "Contact", "Home")</li>
+                        <li class="divider"></li>
                         <li class="has-dropdown not-click">
-                        <li><a href="#">Biografier & Memoarer</a></li>
-                        <li><a href="#">Datorer & IT</a></li>
-                        <li><a href="#">Deckare</a></li>
-                        <li><a href="#">Djur & Natur</a></li>
-                        <li><a href="#">Ekonomi & Juridik</a></li>
-                        <li><a href="#">Familj & Hälsa</a></li>
-                        <li><a href="#">Filosofi & Religion</a></li>
+                            <a href="#">Välj kategori</a>
+                            <ul class="dropdown dropdown-custom hidden-for-large-up">
+
+                                <li><label>KATEGORIER A-Ö</label></li>
+
+                                <li class="has-dropdown not-click">
+                                <li><a href="#">Barnböcker</a></li>
+                                <li><a href="#">Biografier & Memoarer</a></li>
+                                <li><a href="#">Datorer & IT</a></li>
+                                <li><a href="#">Deckare</a></li>
+                                <li><a href="#">Djur & Natur</a></li>
+                                <li><a href="#">Ekonomi & Juridik</a></li>
+                                <li><a href="#">Familj & Hälsa</a></li>
+                                <li><a href="#">Filosofi & Religion</a></li>
 
 
-                        <li><a href="#">Dropdown Option</a></li>
-                        <li><a href="#">Dropdown Option</a></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li class="divider"></li>
+                                <li><label>Section Name</label></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li><a href="#">Dropdown Option</a></li>
+                                <li class="divider"></li>
+
+
+                            </ul>
+
+
                         <li class="divider"></li>
-                        <li><label>Section Name</label></li>
-                        <li><a href="#">Dropdown Option</a></li>
-                        <li><a href="#">Dropdown Option</a></li>
-                        <li><a href="#">Dropdown Option</a></li>
+
+                        <li class="has-button">
+                            <a class="small button" href="#">Search</a>
+                        </li>
+                        <li class=" search">
+                            <form>
+                                <input type="search" class="long">
+                            </form>
+                        </li>
+
+
                         <li class="divider"></li>
+                    </ul>
+                    <ul class="right">
+
+
+
+
+                        <li class="has-dropdown not-click " id="cart">@Html.Partial("_CartWidgetView")</li>
 
 
                     </ul>
-
-
-                <li class="divider"></li>
-                
-                <li class="has-button">
-    <a class="small button" href="#">Search</a>
-</li>
-                <li class=" search">
-                    <form>
-                        <input type="search" class="long" >
-                    </form>
-                </li>
-
-                
-                <li class="divider"></li>
-                </ul>
-                <ul class="right">
-                    
-
-                  
-                
-                    <li class="has-dropdown not-click " id="cart">@Html.Partial("_CartWidgetView")</li>
-
-         
-                </ul>
-        </section>
+                </section>
     </nav>
 
-    <div id="loadingDiv" loader>
-        <img src="~/Content/spinner.gif" class="ajax-loader" />
-    </div>
 
 
 
-    <div class="container body-content">
-        @RenderBody()
+        <div id="loadingDiv" loader>
+            <img src="~/Content/spinner.gif" class="ajax-loader" />
+        </div>
+
+    
 
 
-    </div>
+        <div class="container body-content">
+            @RenderBody()
 
-    <footer class="row">
-        <div class="large-12 columns">
-            <hr />
-            <div class="row">
-                <div class="large-6 columns">
-                    <p>© </p>
-                </div>
-                <div class="large-6 columns">
-                    <ul class="inline-list right">
-                        <li><a href="#">Link 1</a></li>
 
-                    </ul>
+        </div>
+
+        <footer class="row">
+            <div class="large-12 columns">
+                <hr />
+                <div class="row">
+                    <div class="large-6 columns">
+                        <p>© Book OnClick</p>
+                    </div>
+                    <div class="large-6 columns">
+                       
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
 
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/foundation")
-    @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/foundation")
+        @Scripts.Render("~/bundles/jqueryval")
 
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
 
-    <script src="~/Scripts/slider.js"></script>
-    
+        <script src="~/Scripts/slider.js"></script>
+
 
 </body>
 </html>

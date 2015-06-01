@@ -146,8 +146,8 @@
     <Content Include="Content\foundation.min.css" />
     <Content Include="Content\Images\logo .png" />
     <Content Include="Content\Images\logo small.png" />
-    <Content Include="Content\Images\offer1.jpg" />
-    <Content Include="Content\Images\offer2.jpg" />
+    <Content Include="Content\Images\offer4.jpg" />
+    <Content Include="Content\Images\offer6.jpg" />
     <Content Include="Content\slick-theme.css" />
     <Content Include="Content\slick.css" />
     <Content Include="Content\spinner.gif" />

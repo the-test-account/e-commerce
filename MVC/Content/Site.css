@@ -27,6 +27,22 @@ h3.title{
   margin: 5px 0px 5px 0px;
   height:30px;
 }
+h3.title-top5{
+      overflow: hidden;
+  line-height: 1.26;
+  font-size: .72714rem;
+    max-height: 2.4em;
+  text-overflow: ellipsis;
+  margin: 5px 0px 0px 0px;
+  height:30px;
+}
+
+a {
+  color: #0A5A7A;
+  line-height: inherit;
+  text-decoration: none;
+  font-weight:600;
+}
 h3.name{
      line-height: 1.26;
   font-size: .82714rem;
@@ -126,17 +142,23 @@ nav.custom{
 }
 
 div.slider-background {
-    background-color:#919191; 
+    background-color:#FFE100; 
     /*filter: alpha(opacity=60);
     -moz-opacity: 0.6;
   
   opacity: 0.6;*/
-
+max-height:250px;
 }
-div.slider {
-  
+.small-block-grid-1 > li{
+    width:70%;
 }
-
   .long {
     min-width:930px;
+  }
+
+  .f-dropdown.content ul li{
+    float:none;
+  }
+  .f-dropdown:after{
+    border-style: none !important;
   }
