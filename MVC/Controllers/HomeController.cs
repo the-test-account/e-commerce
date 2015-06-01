@@ -9,14 +9,12 @@ using System.Web.Mvc;
 namespace MVC.Controllers
 {
 	public class HomeController : Controller
-	{
-		private GetApiResponse<DisplayAdLibrisForBookModel> apiModelAdLibris;
+	{	
 		private GetApiResponse<BookModel> apiModelBook;
-		
-
+	
 		public HomeController()
 		{
-			apiModelAdLibris = new GetApiResponse<DisplayAdLibrisForBookModel>();
+	
 			apiModelBook = new GetApiResponse<BookModel>();
 		}
 
@@ -52,16 +50,6 @@ namespace MVC.Controllers
 			return PartialView("_Details");
 		}
 
-		public ActionResult GetInfoFromAdlibris(string isbn)
-		{
-			if (isbn != null)
-			{
-				apiModelAdLibris.BookForAdLibris = apiModelAdLibris.GetBookFromAdlibris(isbn, "api/APIAdLibris/");
-				return View("BookInfoView", apiModelAdLibris.BookForAdLibris);
-			}
-			return View("Adlibris", apiModelAdLibris.BookForAdLibris);
-		}
-
 		public ActionResult Contact()
 		{
 			ViewBag.Message = "Your contact page.";
@@ -69,26 +57,6 @@ namespace MVC.Controllers
 			return View();
 		}
 
-		[HttpPost]
-		public async Task<ActionResult> SaveBook(DisplayAdLibrisForBookModel model)
-		{
-			if (ModelState.IsValid)
-			{
-				var savedInDb = await apiModelBook.IsBookInDb("api/APIDbBook?isbn=", model.ISBN);
-				model.AlreadyInDb = savedInDb;
-
-				if (model.AlreadyInDb)
-				{
-					return View("BookInfoView", model);
-				}
-
-				apiModelBook.SaveBookToDb("api/APIDbBook/", model);
-				CacheHelper.ReloadCache();
-				return RedirectToAction("Index", "Home");
-			}
-
-			return RedirectToAction("GetInfoFromAdlibris", model);
-			
-		}
+		
 	}
 }

@@ -401,5 +401,22 @@ namespace DataLayer
 
 		
 		}
+
+		public void Edit(BookModel book)
+		{
+			var bookToEdit = context.Books.Find(book.Id);
+			var dbBook =ConvertHelpers.Instance.ConvertBookModelToDBBook(book);
+			bookToEdit = dbBook;
+			context.Books.Add(bookToEdit);
+			context.SaveChanges();
+		
+		}
+
+		public void Delete(int id)
+		{
+			var bookToDelete = context.Books.Find(id);
+			context.Books.Remove(bookToDelete);
+			context.SaveChanges();
+		}
 	}
 }

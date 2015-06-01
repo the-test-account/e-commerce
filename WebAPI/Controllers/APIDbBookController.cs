@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
 		}
 		public bool Get(string isbn)
 		{
-			return repo.IsBookInDB(isbn);			
+			return repo.IsBookInDB(isbn);
 		}
 
 		public BookModel Get(int id)
@@ -44,6 +44,15 @@ namespace WebAPI.Controllers
 			repo.Add(model);
 
 		}
+		public void Put(int id, [FromBody]BookModel book)
+		{
+			repo.Edit(book);
+		}
 
+		
+		public void Delete(int id)
+		{
+			repo.Delete(id);
+		}
 	}
 }

@@ -6,7 +6,7 @@
 
 <h2>View</h2>
 
-@using (Html.BeginForm("SaveBook", "Home", FormMethod.Post))
+@using (Html.BeginForm("SaveBook", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -158,6 +158,6 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tillbaka", "Index")
 </div>
 
