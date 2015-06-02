@@ -46,8 +46,6 @@
   <ItemGroup>
     <Compile Include="DisplayAdLibrisForBookModel.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="IPhotoManager.cs" />
-    <Compile Include="LocalPhotoManager.cs" />
     <Compile Include="ParseAdlibris.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingCartModel.cs" />

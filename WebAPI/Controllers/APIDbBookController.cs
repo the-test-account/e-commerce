@@ -3,8 +3,10 @@ using DataLayer;
 using Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.OData;
 
 namespace WebAPI.Controllers
 {
@@ -17,10 +19,10 @@ namespace WebAPI.Controllers
 		{
 			repo = new BookRepository();
 		}
-
-		public List<BookModel> Get()
+		[EnableQuery()]
+		public IQueryable<BookModel> Get()
 		{
-			return repo.GetAllBooks();
+			return repo.GetAllBooks().AsQueryable();
 		}
 		public bool Get(string isbn)
 		{

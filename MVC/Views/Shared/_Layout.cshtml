@@ -41,55 +41,62 @@
                         <li class="divider"></li>
                         <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                         <li class="divider"></li>
-                        
-                        <li class="show-for-large-up">
-                        
-                            <a href="#" data-dropdown="mega-menu-1" style="width:146px" data-options="is_hover:true" >Välj kategori</a>
-                            <div id="mega-menu-1" data-dropdown-content class="large f-dropdown content row">
-                                <div class="large-4 columns">
-                                    <ul>
-                                        <li><label>KATEGORIER A-G</label></li>
-                                        <li><a href="#">Barnböcker</a></li>
-                                        <li><a href="#">Biografier & Memoarer</a></li>
-                                        <li><a href="#">Datorer & IT</a></li>
-                                        <li><a href="#">Deckare</a></li>
-                                        <li><a href="#">Djur & Natur</a></li>
-                                        <li><a href="#">Ekonomi & Juridik</a></li>
-                                        <li><a href="#">Familj & Hälsa</a></li>
-                                        <li><a href="#">Filosofi & Religion</a></li>
-                                        <li><a href="#">Geografiska områden</a></li>
-                                        
+                        @using (Ajax.BeginForm("Search", "Home",
+                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
+                        {
 
-                                    </ul>
-                                </div>
-                                <div class="large-4 columns">
-                                    <ul>
 
-                                        <li><label>KATEGORIER H-O</label></li>
-                                        <li><a href="#">Hem & Trädgård</a></li>
-                                        <li><a href="#">Historia & Arkeologi</a></li>
-                                        <li><a href="#">Humor & Presentböcker</a></li>
-                                        <li><a href="#">Kokböcker</a></li>
-                                        <li><a href="#">Konst & Musik</a></li>
-                                        <li><a href="#">Litteraturvetenskap</a></li>
-                                        <li><a href="#">Medicin</a></li>
-                                        <li><a href="#">Naturvetenskap & Teknik</a></li>
-                                        <li><a href="#">Ordböcker & Språk</a></li>
-                                        
-                                        
-                                    </ul>
-                                </div>
-                                <div class="large-4 columns">
-                                    <ul>
 
-                                        
-                                        <li><label>KATEGORIER P-Ö</label></li>
-                                        <li><a href="#">Psykologi & Pedagogik</a></li>
-                                        <li><a href="#">Resor & Geografi</a></li>
-                                        <li><a href="#">Samhälle & Politik</a></li>
-                                        <li><a href="#">Serier & Grafiska romaner</a></li>
-                                        <li><a href="#">Skönlitteratur</a></li>
-                                        <li><a href="#">Sport & Fritid</a></li>
+
+                            <li class="show-for-large-up">
+
+                                <a href="#" data-dropdown="mega-menu-1" style="width:146px" data-options="is_hover:true">Välj kategori</a>
+                                <div id="mega-menu-1" data-dropdown-content class="large f-dropdown content row">
+                                    <div class="large-4 columns">
+                                        <ul>
+                                            <li><label>KATEGORIER A-G</label></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Barnböcker" /></a></li>
+                                            <li><a href="#">Biografier & Memoarer</a></li>
+                                            <li><a href="#">Datorer & IT</a></li>
+                                            <li><a href="#">Deckare</a></li>
+                                            <li><a href="#">Djur & Natur</a></li>
+                                            <li><a href="#">Ekonomi & Juridik</a></li>
+                                            <li><a href="#">Familj & Hälsa</a></li>
+                                            <li><a href="#">Filosofi & Religion</a></li>
+                                            <li><a href="#">Geografiska områden</a></li>
+
+
+                                        </ul>
+                                    </div>
+                                    <div class="large-4 columns">
+                                        <ul>
+
+                                            <li><label>KATEGORIER H-O</label></li>
+                                            <li><a href="#">Hem & Trädgård</a></li>
+                                            <li><a href="#">Historia & Arkeologi</a></li>
+                                            <li><a href="#">Humor & Presentböcker</a></li>
+                                            <li><a href="#">Kokböcker</a></li>
+                                            <li><a href="#">Konst & Musik</a></li>
+                                            <li><a href="#">Litteraturvetenskap</a></li>
+                                            <li><a href="#">Medicin</a></li>
+                                            <li><a href="#">Naturvetenskap & Teknik</a></li>
+                                            <li><a href="#">Ordböcker & Språk</a></li>
+
+
+                                        </ul>
+                                    </div>
+                                    <div class="large-4 columns">
+                                        <ul>
+
+
+                                            <li><label>KATEGORIER P-Ö</label></li>
+                                            <li><a href="#">Psykologi & Pedagogik</a></li>
+                                            <li><a href="#">Resor & Geografi</a></li>
+                                            <li><a href="#">Samhälle & Politik</a></li>
+                                            <li><a href="#">Serier & Grafiska romaner</a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Skönlitteratur" /></a></li>
+
+                                       <li><a href="#">Sport & Fritid</a></li>
                                         <li><a href="#">Student</a></li>
                                         <li><a href="#">Tonår & Unga vuxna</a></li>
                                         <li><a href="#">Uppslagsverk</a></li>
@@ -98,19 +105,23 @@
                                 </div>
                             </div>
                         </li>
+                            @Html.Hidden("search","")
+                        }
                         <li class="divider" ></li>
                         
-                      
+                      @using (Ajax.BeginForm("Search", "Home",
+                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
+                      {
 
                         <li class="has-button" >
-                            <a class="small button" href="#">Search</a>
+                            <input type="submit" class="small button" value="Search" />
                         </li>
                         <li class="search">
-                            <form>
-                                <input type="search" class="long">
-                            </form>
+                          
+                                <input type="text" id="search" name="search" class="long">
+                            
                         </li>
-
+                      }
 
                         <li class="divider"></li>
                     </ul>

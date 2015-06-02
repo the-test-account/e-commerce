@@ -33,6 +33,9 @@
         
     }
 
+    $(".menuopt").click(function () {
+        $('#search').val($(this).val());
+    });
 
 
 

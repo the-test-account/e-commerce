@@ -22,7 +22,7 @@ namespace MVC.Controllers
 		public ActionResult Index()
 		{
 			var model = new StartPageViewModel();
-			apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks","?");
+			apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks", "?");
 			model.BookList = CacheHelper.GetAllBooks();
 			model.TopFive = apiModelBook.TopFiveBooks;
 
@@ -58,7 +58,22 @@ namespace MVC.Controllers
 
 			return View();
 		}
+		[HttpPost]
+		public ActionResult Search(string search)
+		{
+			search = search.ToLower();
 
+			var model = new StartPageViewModel();
+			var searchResults = apiModelBook.GetAllBooksFromDb("api/APIDbBook?$filter=contains(Title, '" + search + "') "+
+				"or contains(Description, '" + search + "') or Authors/any(a: tolower(a/FirstName) eq '" + search + "') "+
+				"or Authors/any(a: tolower(a/LastName) eq '" + search + "') or ISBN eq '" + search + "' "+
+				"or Genres/any(g: tolower(g/Name) eq  '" + search + "') or Readers/any(r: tolower(r/FirstName) eq '" + search + "') " +
+				"or Readers/any(r: tolower(r/LastName) eq '" + search + "') or tolower(Format/Name) eq  '" + search + "'");
+			model.BookList = searchResults;
+			apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks", "?");
+			model.TopFive = apiModelBook.TopFiveBooks;
+			return PartialView("_bookslist", model);
+		}
 		
 	}
 }
