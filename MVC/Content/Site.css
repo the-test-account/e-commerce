@@ -102,7 +102,27 @@ p.pn{
     font-size:small;
      margin-bottom:0px;
 }
-
+div.form-group{
+    margin:45px 0px 45px 0px;
+}
+div.fname{
+    float:left;
+    width:280px;
+    margin-right:10px;
+}
+div.lname{
+    
+    width:280px;
+   
+}
+div.email{
+  width:600px;
+    max-width:600px;
+    
+}
+input, select, textarea .email {
+  max-width: 620px !important;
+}
 ul.dropdown-custom{
     height:10px;
     line-height:1px;
