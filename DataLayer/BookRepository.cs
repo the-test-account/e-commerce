@@ -490,5 +490,23 @@ namespace DataLayer
 		{
 			return context.Books.Where(b => b.Id == id).FirstOrDefault().Genres.ToList();
 		}
+
+		public List<BookModel> GetSuggestionsByCategory(int id)
+		{
+			List<BookModel> books = new List<BookModel>();
+			var dbBook = context.Books.FirstOrDefault(b => b.Id == id);
+			var firstBooksGenre = dbBook.Genres.FirstOrDefault().Id;
+			var list = context.Books.SelectMany(b => b.Genres.Where(g => g.Id == firstBooksGenre), (b, g) => b).ToList();
+			var modellist = new List<BookModel>();
+			foreach (var item in list)
+			{
+				if (item.Id != id)
+				{
+					modellist.Add(ConvertHelpers.Instance.ConvertDBBookToBookModel(item));
+				}
+				
+			}
+			return modellist;
+		}
 	}
 }

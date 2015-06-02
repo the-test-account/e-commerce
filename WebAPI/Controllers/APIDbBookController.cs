@@ -28,7 +28,6 @@ namespace WebAPI.Controllers
 		{
 			return repo.IsBookInDB(isbn);
 		}
-
 		public BookModel Get(int id)
 		{
 			try

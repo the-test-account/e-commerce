@@ -20,7 +20,7 @@ namespace MVC.Models
 		public BookModel Book { get; set; }
 
 		public List<BookModel> Books { get; set; }
-
+		public List<BookModel> BooksSuggestion { get; set; }
 		public List<DeliveryTypeModel> Deliveries { get; set; }
 
 		public List<PaymentTypeModel> Payments { get; set; }
@@ -166,6 +166,12 @@ namespace MVC.Models
 		{
 			Book = GetInfoFromWebApi(path, id.ToString()) as BookModel;
 			return Book;
+		}
+
+		public List<BookModel> GetSuggestionFromBookIdFromDB(string path, int id)
+		{
+			BooksSuggestion = GetListInfoFromWebApi(path, id.ToString()) as List<BookModel>;
+			return BooksSuggestion;
 		}
 
 		public List<BookModel> GetTopFiveBooksFromDb(string path, string query)

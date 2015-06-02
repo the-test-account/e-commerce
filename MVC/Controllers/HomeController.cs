@@ -46,6 +46,7 @@ namespace MVC.Controllers
 			{
 				var model = new BookDetailsAndSuggestionsViewModel();
 				model.Book = apiModelBook.GetBookFromDbById("api/APIDbBook/", id);
+				model.Suggestions = apiModelBook.GetSuggestionFromBookIdFromDB("api/APIDbBookSuggestion/", id);
 				CacheHelper.ReloadCache();
 				return PartialView("_Details", model);
 			}
@@ -59,12 +60,12 @@ namespace MVC.Controllers
 			return View();
 		}
 
-        public ActionResult About()
-        {
-           
+		public ActionResult About()
+		{
+		   
 
-            return View();
-        }
+			return View();
+		}
 		[HttpPost]
 		public ActionResult Search(string search)
 		{

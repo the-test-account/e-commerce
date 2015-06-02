@@ -156,6 +156,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\APIAdLibrisController.cs" />
     <Compile Include="Controllers\APIDbBookController.cs" />
+    <Compile Include="Controllers\APIDbBookSuggestionController.cs" />
     <Compile Include="Controllers\APIDbDeliveryController.cs" />
     <Compile Include="Controllers\APIDbOrderController.cs" />
     <Compile Include="Controllers\APIDbPaymentController.cs" />
