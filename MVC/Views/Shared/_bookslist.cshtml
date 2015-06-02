@@ -12,60 +12,70 @@
             <section class="section">
                 <h5 class="title" style="margin-left:0px"><a href="#panel2">Nyheter</a></h5>
                 <div class="content" data-slug="panel2">
-                   
-                    
-                    <ul class="large-block-grid-5">
-                        
-                        @foreach (var item in Model.BookList)
-                        {
-                            int bookInCart = 0;
-                            if (cart != null)
+                   @if (Model.ErrorInSearchResult)
+                   {
+                    <span>Något gick fel, vad synd</span>
+                   }
+                    else if(Model.NoSearchResultFound)
+                    {
+                        <span>Inget sökresultat hittades</span>
+                    }
+                    else
+                    {
+                        <ul class="large-block-grid-5">
+
+                            @foreach (var item in Model.BookList)
                             {
-                                bookInCart = cart.GetTotalBookInCart(item.ISBN);
+                                int bookInCart = 0;
+                                if (cart != null)
+                                {
+                                    bookInCart = cart.GetTotalBookInCart(item.ISBN);
 
-                            }
+                                }
 
-                            <li class="display">
+                                <li class="display">
 
-                                @Ajax.ImageActionLink(item.ImagePath, "Image", "Details", new { id = item.Id },
+                                    @Ajax.ImageActionLink(item.ImagePath, "Image", "Details", new { id = item.Id },
                                     new AjaxOptions { UpdateTargetId = "divList" }, new { style = "height: 180px;" })
 
-                                <div class="container" style="height: 65px;">
-                                    <h3 class="title">
-                                        @Ajax.ActionLink(item.Title, "Details", new { id = item.Id },
+                                    <div class="container" style="height: 65px;">
+                                        <h3 class="title">
+                                            @Ajax.ActionLink(item.Title, "Details", new { id = item.Id },
                                     new AjaxOptions { UpdateTargetId = "divList" })
-                                    </h3>
-                                    @foreach (var name in item.Authors)
+                                        </h3>
+                                        @foreach (var name in item.Authors)
+                                        {
+                                            <h3 class="name"> @Html.DisplayFor(modelItem => name.DisplayFullName)</h3>
+                                        }
+                                    </div>
+                                    <br />
+
+                                    <button class="price">@Html.DisplayFor(modelItem => item.Price) kr</button>
+
+                                    @if (item.QuantityInStock == 0 || bookInCart == item.QuantityInStock)
                                     {
-                                        <h3 class="name"> @Html.DisplayFor(modelItem => name.DisplayFullName)</h3>
+                                        <button class=" fa fa-frown-o cart"></button>
                                     }
-                                </div>
-                                <br />
-
-                                <button class="price">@Html.DisplayFor(modelItem => item.Price) kr</button>
-
-                                @if (item.QuantityInStock == 0 || bookInCart == item.QuantityInStock)
-                                {
-                                    <button class=" fa fa-frown-o cart"></button>
-                                }
-                                else
-                                {
-
-                                    using (Ajax.BeginForm("AddToCartWidget", "ShoppingCart", new { id = item.Id },
-                                    new AjaxOptions { UpdateTargetId = "cart", OnComplete = "updateCart(" + @item.Id + ")" }))
+                                    else
                                     {
-                                        <div id="Shop">
-                                            @Html.HiddenFor(x => item.Id)
-                                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                                            <button id="@item.Id-Add" class="fa fa-shopping-cart cart addToCart" data-bookincart=@bookInCart data-bookinstock=@(item.QuantityInStock - bookInCart) />
-                                        </div>
-                                    }
 
-                                }
-                            </li>
-                        }
+                                        using (Ajax.BeginForm("AddToCartWidget", "ShoppingCart", new { id = item.Id },
+                                        new AjaxOptions { UpdateTargetId = "cart", OnComplete = "updateCart(" + @item.Id + ")" }))
+                                        {
+                                            <div id="Shop">
+                                                @Html.HiddenFor(x => item.Id)
+                                                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                                <button id="@item.Id-Add" class="fa fa-shopping-cart cart addToCart" data-bookincart=@bookInCart data-bookinstock=@(item.QuantityInStock - bookInCart) />
+                                            </div>
+                                        }
+
+                                    }
+                                </li>
+                            }
+
+                        </ul>
+                    }
                     
-                    </ul>
                 </div>
             </section>
         </div>

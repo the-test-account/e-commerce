@@ -10,7 +10,8 @@ namespace MVC.ViewModel
 	{
 		public List<BookModel> BookList { get; set; }
 		public List<BookModel> TopFive { get; set; }
-		
 
+		public bool NoSearchResultFound { get; set; }
+		public bool ErrorInSearchResult { get; set; }
 	}
 }
