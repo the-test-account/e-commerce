@@ -1,8 +1,10 @@
 ﻿@model Entities.BookModel
+@using (Html.BeginForm())
+{
 
 <h3>Är du säker på att du vill radera boken?</h3>
 <div>
-    <h4>BookModel</h4>
+    <h4>Radera bok</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -112,3 +114,4 @@
         </div>
     }
 </div>
+}

@@ -48,6 +48,7 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="SeriesId" Type="int" />
           <Property Name="QuantityInStock" Type="int" Nullable="false" />
+          <Property Name="NotOnSale" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="BookGenre">
           <Key>
@@ -156,6 +157,16 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_AuthorBook_Author">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
@@ -379,6 +390,7 @@
           <EntitySet Name="Reader" EntityType="Self.Reader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReaderInBook" EntityType="Self.ReaderInBook" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Series" EntityType="Self.Series" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AuthorBook_Author" Association="Self.FK_AuthorBook_Author">
             <End Role="Author" EntitySet="Author" />
             <End Role="AuthorBook" EntitySet="AuthorBook" />
@@ -523,6 +535,7 @@
             <End Role="Book" EntitySet="Books" />
             <End Role="Reader" EntitySet="Readers" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="MagicBooksDBModel.sysdiagram" />
         </EntityContainer>
         <EntityType Name="Address">
           <Key>
@@ -570,6 +583,7 @@
           <NavigationProperty Name="Authors" Relationship="MagicBooksDBModel.AuthorBook" FromRole="Book" ToRole="Author" />
           <NavigationProperty Name="Genres" Relationship="MagicBooksDBModel.BookGenre" FromRole="Book" ToRole="Genre" />
           <NavigationProperty Name="Readers" Relationship="MagicBooksDBModel.ReaderInBook" FromRole="Book" ToRole="Reader" />
+          <Property Name="NotOnSale" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -824,6 +838,16 @@
           <End Type="MagicBooksDBModel.Book" Role="Book" Multiplicity="*" />
           <End Type="MagicBooksDBModel.Reader" Role="Reader" Multiplicity="*" />
         </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -852,6 +876,7 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="MagicBooksDBModel.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="NotOnSale" ColumnName="NotOnSale" />
                 <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
                 <ScalarProperty Name="SeriesId" ColumnName="SeriesId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -996,6 +1021,17 @@
               <ScalarProperty Name="Id" ColumnName="BookId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MagicBooksDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

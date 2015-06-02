@@ -15,7 +15,7 @@
         @if (Model.AlreadyInDb)
         {
             <div id="error">
-            @Html.Partial("_ErrorMessage")
+                @Html.Partial("_ErrorMessage")
             </div>
         }
 
@@ -63,9 +63,33 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "error" })
+            </div>
+            <div class="col-md-4">
+                @*<fieldset>
+                    <legend>Ladda upp omslag (ange isbn f&ouml;rst)</legend>
+                    <div class="form-group">
+                        <div class=" col-md-4 col-md-offset-2">
+                            <form name="newPhotosForm" role="form" enctype="multipart/form-data" >
+                                <div class="form-group" >
+                                    <label for="newPhotos">Välj ett bokomslag att ladda upp</label>
+                                    <input type="file" id="newPhotos" class="uploadFile" accept="image/*" files="photos" has-files="hasFiles" multiple>
+                                </div>
+                                <div class="form-group" ng-show="hasFiles">
+                                    <ul class="list-inline">
+                                        <li><strong>filer:</strong></li>
+                                        <li ng-repeat="photo in photos"> {{photo.name}}</li>
+                                    </ul>
+                                    <input class="btn btn-primary" type="button" upload="upload(photos)" value="Ladda upp">
+                                    <input class="btn btn-warning" type="reset" value="avbryt" />
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </fieldset>*@
             </div>
         </div>
 
@@ -160,4 +184,3 @@
 <div>
     @Html.ActionLink("Tillbaka", "Index")
 </div>
-

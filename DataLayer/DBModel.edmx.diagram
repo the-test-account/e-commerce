@@ -33,6 +33,7 @@
         <AssociationConnector Association="MagicBooksDBModel.AuthorBook" />
         <AssociationConnector Association="MagicBooksDBModel.BookGenre" />
         <AssociationConnector Association="MagicBooksDBModel.ReaderInBook" />
+        <EntityTypeShape EntityType="MagicBooksDBModel.sysdiagram" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

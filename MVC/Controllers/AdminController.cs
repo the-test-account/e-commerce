@@ -69,7 +69,6 @@ namespace MVC.Controllers
 		}
 
 
-		// POST: Test/Edit/5
 		[HttpPost]
 		public async Task<ActionResult> Edit(int id, BookModel model)
 		{
@@ -85,20 +84,19 @@ namespace MVC.Controllers
 			}
 		}
 
-		// GET: Test/Delete/5
 		public ActionResult Delete(int id)
 		{
 			var book = apiModelBook.GetBookFromDbById("api/APIDbBook/", id);
 			return View("DeleteBookView", book);
 		}
 
-		// POST: Test/Delete/5
+		
 		[HttpPost]
-		public ActionResult Delete(int id, FormCollection collection)
+		public async Task<ActionResult> Delete(int id, BookModel model)
 		{
 			try
 			{
-				// TODO: Add delete logic here
+			await apiModelBook.DeleteBook("api/APIDbBook/", id.ToString(), model);
 
 				return RedirectToAction("Index");
 			}

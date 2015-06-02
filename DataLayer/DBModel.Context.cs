@@ -39,5 +39,6 @@ namespace DataLayer
         public virtual DbSet<Publisher> Publishers { get; set; }
         public virtual DbSet<Reader> Readers { get; set; }
         public virtual DbSet<Series> Series { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

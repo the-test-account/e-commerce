@@ -2,76 +2,68 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
-using System.Reflection;
 
 namespace DataLayer
 {
 	public class BookRepository
 	{
 		private MagicBooksDBEntities context;
-		
 
 		public BookRepository()
 		{
 			context = new MagicBooksDBEntities();
-			
 		}
 
 		public void Add(DisplayAdLibrisForBookModel book)
 		{
-			
-				Series series = new Series();
+			Series series = new Series();
 
-				if (book.SeriesName != string.Empty && book.SeriesName != null)
-				{
-					series = GetSeriesByName(book.SeriesName);
-				}
-				else
-				{
-					series = null;
-				}
+			if (book.SeriesName != string.Empty && book.SeriesName != null)
+			{
+				series = GetSeriesByName(book.SeriesName);
+			}
+			else
+			{
+				series = null;
+			}
 
-				List<Reader> readers = new List<Reader>();
+			List<Reader> readers = new List<Reader>();
 
-				if (book.ReaderNames != string.Empty && book.ReaderNames != null)
-				{
-					readers = GetReadersByName(book.ReaderNames).ToList();
-				}
-				else
-				{
-					readers = null;
-				}
+			if (book.ReaderNames != string.Empty && book.ReaderNames != null)
+			{
+				readers = GetReadersByName(book.ReaderNames).ToList();
+			}
+			else
+			{
+				readers = null;
+			}
 
-				Book newDBBook = new Book
-				{
-					Title = book.Title,
-					Description = book.Description,
-					ISBN = book.ISBN,
-					Series = series,
-					PublishingDate = Convert.ToDateTime(book.PublishingDate),
-					ImagePath = book.ImagePath,
-					Readers = readers,
-					Publisher = GetPublisherByName(book.PublisherName),
-					Authors = GetAuthorsByNames(book.AuthorNames),
-					Format = GetFormatByName(book.Format),
-					Genres = GetGenresByName(book.GenreNames),
-					Language = GetLanguageByName(book.Language),
-					PageNumber = book.PageNumber,
-					Price = book.Price,
-					Weight = book.Weight,
-					QuantityInStock = int.Parse(book.QuantityInStock)
-				};
-				context.Books.Add(newDBBook);
-				context.SaveChanges();
-						
-			
+			Book newDBBook = new Book
+			{
+				Title = book.Title,
+				Description = book.Description,
+				ISBN = book.ISBN,
+				Series = series,
+				PublishingDate = Convert.ToDateTime(book.PublishingDate),
+				ImagePath = book.ImagePath,
+				Readers = readers,
+				Publisher = GetPublisherByName(book.PublisherName),
+				Authors = GetAuthorsByNames(book.AuthorNames),
+				Format = GetFormatByName(book.Format),
+				Genres = GetGenresByName(book.GenreNames),
+				Language = GetLanguageByName(book.Language),
+				PageNumber = book.PageNumber,
+				Price = book.Price,
+				Weight = book.Weight,
+				QuantityInStock = int.Parse(book.QuantityInStock)
+			};
+			context.Books.Add(newDBBook);
+			context.SaveChanges();
 		}
 
 		public bool IsBookInDB(string isbn)
 		{
-			
 			var book = context.Books.Where(b => b.ISBN == isbn).FirstOrDefault();
 			if (book != null)
 			{
@@ -79,11 +71,10 @@ namespace DataLayer
 			}
 			return false;
 		}
-		
+
 		public List<BookModel> GetAllBooks()
 		{
-
-			var books = context.Books.AsEnumerable().Select(b => new BookModel
+			var books = context.Books.Where(b => b.NotOnSale == false).AsEnumerable().Select(b => new BookModel
 				{
 					Authors = GetBookAuthors(b.Id),
 					Description = b.Description,
@@ -136,7 +127,6 @@ namespace DataLayer
 			}).FirstOrDefault();
 			return book;
 		}
-
 
 		private List<GenreModel> GetBookGenres(int id)
 		{
@@ -404,57 +394,53 @@ namespace DataLayer
 				books.Add(ConvertHelpers.Instance.ConvertDBBookToBookModel(context.Books.Find(item.Key)));
 			}
 			return books;
-
-		
 		}
 
 		public void Edit(BookModel book)
 		{
 			var bookToEdit = context.Books.Find(book.Id);
-			bookToEdit = SaveEditedBook(book, bookToEdit);			
+			bookToEdit = SaveEditedBook(book, bookToEdit);
 			context.SaveChanges();
-		
 		}
 
 		public void Delete(int id)
 		{
 			var bookToDelete = context.Books.Find(id);
-			context.Books.Remove(bookToDelete);
+			var bookOrders = context.OrderDetails.Where(d => d.BookId == bookToDelete.Id).FirstOrDefault();
+
+			bookToDelete.NotOnSale = true;
 			context.SaveChanges();
 		}
 
 		public Book SaveEditedBook(BookModel model, Book book)
 		{
-			
-				book.Id = model.Id;
-				book.Authors = ConvertModelAuthorToDBAuthor(model.Id);
-				book.Publisher = GetPublisherByName(model.Publisher.Name);
-				book.Genres = ConvertModelGenreToDBGenre(model.Id);
-				if (model.Readers!=null)
-				{
-					book.Readers = ConvertModelReaderToDBReader(model.Id);
-				}
-				book.Format = GetFormatByName(model.Format.Name);
-				book.Language = GetLanguageByName(model.Language.Name);
-				if (model.Series!=null)
-				{
-					
-					book.Series = GetSeriesByName(model.Series.Name);
-				}
-				book.Title = model.Title;
-				book.Description = model.Description;
-				book.ImagePath = model.ImagePath;
-				book.ISBN = model.ISBN;
-				book.PageNumber = model.PageNumber;
-				book.Price = model.Price;
-				book.PublishingDate = model.PublishingDate;
-				book.QuantityInStock = model.QuantityInStock;
-				book.Weight = model.Weight;
-			
+			book.Id = model.Id;
+			book.Authors = ConvertModelAuthorToDBAuthor(model.Id);
+			book.Publisher = GetPublisherByName(model.Publisher.Name);
+			book.Genres = ConvertModelGenreToDBGenre(model.Id);
+			if (model.Readers != null)
+			{
+				book.Readers = ConvertModelReaderToDBReader(model.Id);
+			}
+			book.Format = GetFormatByName(model.Format.Name);
+			book.Language = GetLanguageByName(model.Language.Name);
+			if (model.Series != null)
+			{
+				book.Series = GetSeriesByName(model.Series.Name);
+			}
+			book.Title = model.Title;
+			book.Description = model.Description;
+			book.ImagePath = model.ImagePath;
+			book.ISBN = model.ISBN;
+			book.PageNumber = model.PageNumber;
+			book.Price = model.Price;
+			book.PublishingDate = model.PublishingDate;
+			book.QuantityInStock = model.QuantityInStock;
+			book.Weight = model.Weight;
+
 			return book;
 		}
 
-	
 		private static string ConvertGenresToString(BookModel model)
 		{
 			string genres = string.Empty;

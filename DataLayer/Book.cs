@@ -36,6 +36,7 @@ namespace DataLayer
         public string Description { get; set; }
         public Nullable<int> SeriesId { get; set; }
         public int QuantityInStock { get; set; }
+        public bool NotOnSale { get; set; }
     
         public virtual Format Format { get; set; }
         public virtual Language Language { get; set; }
