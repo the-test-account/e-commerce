@@ -89,6 +89,20 @@ h3.price-detail-look{
     
 }
 
+h3.kontakt{
+    color:#FFE100;
+    font-size:large;
+    background-color:#919191;
+    font-weight:800;
+    padding-left:380px;
+}
+
+p.pn{
+    font-style:italic; 
+    font-size:small;
+     margin-bottom:0px;
+}
+
 ul.dropdown-custom{
     height:10px;
     line-height:1px;
@@ -198,7 +212,7 @@ hr {
 }
 
   .long {
-    min-width:928px;
+    min-width:900px;
   }
 
   .f-dropdown.content ul li{
@@ -211,7 +225,7 @@ hr {
   }
   .f-dropdown.content
   {
-         background-color:transparent;
+         /*background-color:#333333;*/
          border:none;
   
   }
@@ -227,3 +241,42 @@ hr {
      margin-top:-20px;    
  
 }
+  .top-bar form, .top-bar input, .top-bar select {
+  margin-bottom: 0;
+ 
+}
+  .search-field{
+      float:left;
+  }
+  .top-bar form, .top-bar input, .top-bar select {
+  margin-bottom: 0;
+   
+}
+
+  .f-dropdown.content ul li input{
+  float: none;
+  margin-left: 5px;
+  background-color:transparent;
+  color:white;
+  border-color:transparent;
+}
+
+  .f-dropdown.content ul li label{
+  padding-top:10px;
+      float: none;
+  margin-left: 27px;
+  background-color:transparent;
+  color:grey;
+  border-color:transparent;
+}
+@media only screen and (min-width: 64.0625em) {
+    a.kategori {
+        width: 176px !important;
+    }
+}
+     @media only screen and (min-width: 40.0625em){
+         a.kategori {
+      
+        width:146px !important;
+    }
+     }

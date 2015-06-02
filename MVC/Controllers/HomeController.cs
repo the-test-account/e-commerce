@@ -58,6 +58,13 @@ namespace MVC.Controllers
 
 			return View();
 		}
+
+        public ActionResult About()
+        {
+           
+
+            return View();
+        }
 		[HttpPost]
 		public ActionResult Search(string search)
 		{

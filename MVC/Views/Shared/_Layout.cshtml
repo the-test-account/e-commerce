@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book On Click</title>
+    <title>Book OnClick</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -37,94 +37,104 @@
                     <ul class="left">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li class="divider"></li>
-                        <li>@Html.ActionLink("Om Oss", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Om Oss", "About", "Home")</li>
                         <li class="divider"></li>
                         <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                         <li class="divider"></li>
-                        @using (Ajax.BeginForm("Search", "Home",
-                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
-                        {
+@using (Ajax.BeginForm("Search", "Home",
+                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }, new { @style="float:left;"}))
+{
+                        <li class="show-for-large-up">
+   
+
+        <a href="#" data-dropdown="mega-menu-1" class="kategori" data-options="is_hover:true">Välj kategori</a>
+
+        <div id="mega-menu-1" data-dropdown-content class="large f-dropdown content row">
+            <div class="large-4 columns">
+                <ul>
+                    <li><label>KATEGORIER A-G</label></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Barnböcker" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Biografier & Memoarer" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Datorer & IT" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Deckare" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Djur & Natur" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Ekonomi & Juridik" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Familj & Hälsa" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Filosofi & Religion" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Geografiska områden" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Hem & Trädgård" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Historia & Arkeologi" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Humor & Presentböcker" /></a></li>
+
+
+                </ul>
+            </div>
+            <div class="large-4 columns">
+                <ul>
+
+                    <li><label>KATEGORIER H-O</label></li>
+
+                    <li><a href="#"><input type="submit" class="menuopt" value="Kokböcker" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Konst & Musik" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Litteraturvetenskap" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Medicin" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Naturvetenskap & Teknik" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Ordbäcker & Språk" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Psykologi & Pedagogik" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Resor & Geografi" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Samhälle & Politik" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Serier & Grafiska romaner" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Skönlitteratur" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Sport & Fritid" /></a></li>
+                </ul>
+            </div>
+            <div class="large-4 columns">
+                <ul>
+
+
+                    <li><label>KATEGORIER P-Ö</label></li>
 
 
 
 
-                            <li class="show-for-large-up">
+                    <li><a href="#"><input type="submit" class="menuopt" value="Student" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Tonår & Unga vuxna" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Uppslagsverk" /></a></li>
 
-                                <a href="#" data-dropdown="mega-menu-1" style="width:146px" data-options="is_hover:true">Välj kategori</a>
-                                <div id="mega-menu-1" data-dropdown-content class="large f-dropdown content row">
-                                    <div class="large-4 columns">
-                                        <ul>
-                                            <li><label>KATEGORIER A-G</label></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Barnböcker" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Biografier & Memoarer" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Datorer & IT" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Deckare" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Djur & Natur" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Ekonomi & Juridik" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Familj & Hälsa" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Filosofi & Religion" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Geografiska områden" /></a></li>
-                                            
-
-
-                                        </ul>
-                                    </div>
-                                    <div class="large-4 columns">
-                                        <ul>
-
-                                            <li><label>KATEGORIER H-O</label></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Hem & Trädgård" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Historia & Arkeologi" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Humor & Presentböcker" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Kokböcker" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Konst & Musik" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Litteraturvetenskap" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Medicin" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Naturvetenskap & Teknik" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Ordbäcker & Språk" /></a></li>
-                                            
-
-
-                                        </ul>
-                                    </div>
-                                    <div class="large-4 columns">
-                                        <ul>
-
-
-                                           <li><label>KATEGORIER P-Ö</label></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Psykologi & Pedagogik" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Resor & Geografi" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Samhälle & Politik" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Serier & Grafiska romaner" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Skönlitteratur" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Sport & Fritid" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Student" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Tonår & Unga vuxna" /></a></li>
-                                            <li><a href="#"><input type="submit" class="menuopt" value="Uppslagsverk" /></a></li>
-                                        <li class="divider"></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                            @Html.Hidden("search","")
-                        }
+                    <li><label>FORMAT</label></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Inbunden" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="CD-skiva" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Häftad" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Danskt band" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Kartonnage" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="Pocket" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="" /></a></li>
+                    <li><a href="#"><input type="submit" class="menuopt" value="" /></a></li>
+                    <li ><a href="#" style="height:14px"><input type="submit" class="menuopt" value="" /></a></li>
+                   
+                </ul>
+            </div>
+        </div>
+                    </li>
+                            @Html.Hidden("search", "")
+}
                         <li class="divider" ></li>
                         
                       @using (Ajax.BeginForm("Search", "Home",
-                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
+                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }, new {@class="search-field" }))
                       {
 
-                        <li class="has-button" >
-                            <input type="submit" class="small button" value="Search" />
+                        <li class="has-button search-field " >
+                            <input type="submit" class="small button search-field" value="Search" />
                         </li>
                         <li class="search">
                           
-                                <input type="text" id="search" name="search" class="long">
+                            <input type="text" id="search" name="search" class="long" placeholder="Sök på titel, författare, format, ISBN, kategori eller språk ">
                             
                         </li>
                       }
 
-                        <li class="divider"></li>
+                        
                     </ul>
                     <ul class="right">
 
@@ -155,7 +165,7 @@
         </div>
 
         <footer class="row">
-            <div class="large-12 columns">
+           
                 <hr />
                 <div class="row">
                     <div class="large-6 columns">
@@ -165,7 +175,7 @@
                        
                     </div>
                 </div>
-            </div>
+           
         </footer>
 
 
