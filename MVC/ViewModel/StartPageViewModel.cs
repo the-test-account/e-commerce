@@ -10,7 +10,7 @@ namespace MVC.ViewModel
 	{
 		public List<BookModel> BookList { get; set; }
 		public List<BookModel> TopFive { get; set; }
-		public string  SearchString { get; set; }
+		
 
 	}
 }
