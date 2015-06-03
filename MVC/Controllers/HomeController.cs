@@ -65,11 +65,11 @@ namespace MVC.Controllers
 			return PartialView("_Details");
 		}
 
-		public PartialViewResult Contact()
+		public ActionResult Contact()
 		{
 			ViewBag.Message = "Your contact page.";
 
-			return PartialView("Contact");
+			return View();
 		}
 
 		public ActionResult About()

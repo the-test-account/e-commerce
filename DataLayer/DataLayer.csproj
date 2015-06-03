@@ -120,9 +120,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DBScript\BookOnClick.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <EntityDeploy Include="DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

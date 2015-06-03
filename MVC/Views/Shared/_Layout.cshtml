@@ -39,10 +39,10 @@
                         <li class="divider"></li>
                         <li>@Html.ActionLink("Om Oss", "About", "Home")</li>
                         <li class="divider"></li>
-                        <li>@Ajax.ActionLink("Kontakt", "Contact", "Home", null, new AjaxOptions { UpdateTargetId = "divList" })</li>
+                        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                         <li class="divider"></li>
                         @using (Ajax.BeginForm("Search", "Home",
-                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }, null, new { @style = "float:left;" }))
+                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }, new { @style = "float:left;" }))
                         {
                             <li class="show-for-large-up">
 
