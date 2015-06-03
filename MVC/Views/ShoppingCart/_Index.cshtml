@@ -91,15 +91,19 @@
 
                 @if (@Model.Cart.TotalQuantity == 0)
                 {
-                    @Ajax.ActionLink("Fortsätt handla", "ReloadStartPage", "Home", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button disabled" })
+                    @Ajax.ActionLink("Fortsätt handla", "ReloadStartPage", "Home", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button" })
+
+    <button class="button" type="button" disabled>Gå till kassan</button>
                 }
                 else
                 {
 
-                    @Ajax.ActionLink("Fortsätt handla", "ReloadStartPage", "Home", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button" })
+                    @Ajax.ActionLink("Fortsätt handla", "ReloadStartPage", "Home", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button", style="margin-right:10px" })
+
+                    @Ajax.ActionLink("Gå till kassan", "OrderDetails", "ShoppingCart", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button" })
                 }
 
-                @Ajax.ActionLink("Gå till kassan", "OrderDetails", "ShoppingCart", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button" })
+
             </div>
         </div>
     </div>

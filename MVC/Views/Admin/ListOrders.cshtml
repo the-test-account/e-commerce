@@ -25,7 +25,7 @@
         <th>
                     Betalningssätt
         </th>
-                <th width="200">
+                <th width="250">
                     Kommentar
                 </th>
         <th>
@@ -69,7 +69,7 @@
                         @Html.DisplayFor(modelItem => item.Comment)
         </td>
         <td>
-            @Html.ActionLink("Detaljer", "Details", new { id=item.Id }) |
+          
             @Html.ActionLink("Radera", "DeleteOrder", new { id=item.Id })
         </td>
     </tr>

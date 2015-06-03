@@ -97,32 +97,18 @@ h3.kontakt{
     padding-left:380px;
 }
 
-p.pn{
+/*p.pn{
     font-style:italic; 
     font-size:small;
-     margin-bottom:0px;
-}
+     margin-bottom:45px;
+ margin-top:80px;
+
+}*/
 div.form-group{
     margin:45px 0px 45px 0px;
 }
-div.fname{
-    float:left;
-    width:280px;
-    margin-right:10px;
-}
-div.lname{
-    
-    width:280px;
-   
-}
-div.email{
-  width:600px;
-    max-width:600px;
-    
-}
-input, select, textarea .email {
-  max-width: 620px !important;
-}
+
+
 ul.dropdown-custom{
     height:10px;
     line-height:1px;
@@ -157,11 +143,11 @@ img.cover-height{
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 #loadingDiv {
    position: fixed;
@@ -302,7 +288,7 @@ hr {
      }
 
      table.orderlist{
-         margin-left:150px;
+         margin-left:108px;
          /*border:medium;*/
          margin-top:20px;
          border-collapse:collapse;
@@ -311,10 +297,57 @@ hr {
      }
 
      table.orderlist tr:hover {
-          background-color: #B0E2FF;
+          background-color: #FFE100;
        
         
      }
+  .email input  {
+  max-width: 580px;
+}
+   .fname input {
+  float:left;
+  margin-right:20px;
+  max-width: 280px;
+}
+    .lname input {
+  
+  max-width: 280px;
+}
+    .address input {
+  float:left;
+  margin-right:20px;
+  max-width: 280px;
+}
+      .pnumber input {
+  max-width: 580px;
+  
+}
 
-       
-    
+.zip input {
+  max-width: 280px;
+  float:left;
+  margin-right:20px;
+}
+.phonen input {
+  max-width: 280px;
+  
+}
+.city input {
+  max-width: 280px;
+ 
+}
+.payment  {
+ width:280px;
+  float:left!important;
+  margin-right:20px;
+}
+
+.delivery select  {
+ width:280px;
+  
+}
+
+.comment textarea {
+     max-width:580px;
+     display:block;
+}

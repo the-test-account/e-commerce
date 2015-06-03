@@ -6,7 +6,7 @@
 
 
 
-<table class="table ">
+<table class="table orderlist ">
     <thead>
         <tr>
             <th>
@@ -16,26 +16,26 @@
                Bild adress
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ISBN)
+                ISBN
             </th>
             
             
             <th>
-                @Html.DisplayNameFor(model => model.PublishingDate)
+                Utgiven
             </th>
             
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+               Pris
             </th>
             <th>
                 Format
             </th>
            
             <th>
-                @Html.DisplayNameFor(model => model.QuantityInStock)
+               Finns i lager
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Publisher.Name)
+                Förlag
             </th>
             <th>
                 Ändringar
@@ -49,7 +49,7 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td >
-                    <a href="@Html.DisplayFor(modelItem => item.ImagePath)"><img src="@Html.DisplayFor(modelItem => item.ImagePath)"></a>
+                    <a href="@Html.DisplayFor(modelItem => item.ImagePath)"><img style="width:50%" src="@Html.DisplayFor(modelItem => item.ImagePath)"></a>
 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ISBN)
@@ -74,9 +74,9 @@
                     @Html.DisplayFor(modelItem => item.Publisher.Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Ändra", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detaljer", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Radera", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }

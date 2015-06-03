@@ -1,13 +1,15 @@
 ﻿
+<div class="row">
+    <br />
+    @{
+        ViewBag.Title = "Hämta information från Adlibris";
+    }
+    <h2>Hämta information från Adlibris</h2>
 
-@{
-    ViewBag.Title = "Info från Adlibris";
-}
-
-<h2>Info från Adlibris</h2>
-@using (Html.BeginForm("GetInfoFromAdlibris", "Admin"))
-{
-    @Html.TextBox("isbn")
-    <input type="submit" value="isbn" />
-}
-
+    <br />
+    @using (Html.BeginForm("GetInfoFromAdlibris", "Admin"))
+    {
+        @Html.TextBox("isbn", null, new { @placeholder = "Ange ISBN*" })
+        <input type="submit" class="small button" value="Hämta information" />
+    }
+</div>

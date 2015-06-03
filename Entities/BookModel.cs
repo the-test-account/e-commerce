@@ -19,20 +19,25 @@ namespace Entities
 		}
 	
 		public int Id { get; set; }
+         [Display(Name = "Titel:")]
 		public string Title { get; set; }
+         [Display(Name = "Bild adress:")]
 		public string ImagePath { get; set; }
+         [Display(Name = "ISBN:")]
 		public string ISBN { get; set; }
 		public int LanguageId { get; set; }
 		 [Display(Name = "Antal sidor:")]
 		public int PageNumber { get; set; }
+        [UIHint("DateTimePicker")]
 		 [Display(Name = "Utgiven:")]
-		public System.DateTime PublishingDate { get; set; }
+		public DateTime PublishingDate { get; set; }
 		public int PublisherId { get; set; }
 		 [Display(Name = "Vikt:")]
 		public int Weight { get; set; }
 		[Display(Name = "Pris:")]
 		public decimal Price { get; set; }
 		public int FormatId { get; set; }
+         [Display(Name = "Handling:")]
 		public string Description { get; set; }
 		[Display(Name = "Finns i lager:")]
 		public int QuantityInStock { get; set; }

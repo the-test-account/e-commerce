@@ -30,6 +30,7 @@ namespace MVC
 					 "~/Scripts/foundation.js",
                      "~/Scripts/foundation.topbar.js",
                      "~/Scripts/foundation.dropdown.js",
+                     "~/Scripts/foundation-datepicker.js",
 					  "~/Scripts/respond.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -37,7 +38,7 @@ namespace MVC
 					  "~/Content/font-awesome.css",
 					  "~/Content/slick.css",
 					  "~/Content/slick-theme.css",
-                      
+                      "~/Content/foundation-datepicker.css",
 					  "~/Content/Site.css"));
 		}
 	}
