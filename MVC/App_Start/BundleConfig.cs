@@ -15,6 +15,7 @@ namespace MVC
 						"~/Scripts/topbar.js",
 						"~/Scripts/dropdown.js",
 						"~/Scripts/slick.js",
+						"~/Scripts/jquery-ui-1.11.4.js",
 						"~/Scripts/app.js"));
 
 
@@ -28,9 +29,8 @@ namespace MVC
 
 			bundles.Add(new ScriptBundle("~/bundles/foundation").Include(
 					 "~/Scripts/foundation.js",
-                     "~/Scripts/foundation.topbar.js",
-                     "~/Scripts/foundation.dropdown.js",
-                     "~/Scripts/foundation-datepicker.js",
+					 "~/Scripts/foundation.topbar.js",
+					 "~/Scripts/foundation.dropdown.js",
 					  "~/Scripts/respond.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -38,7 +38,7 @@ namespace MVC
 					  "~/Content/font-awesome.css",
 					  "~/Content/slick.css",
 					  "~/Content/slick-theme.css",
-                      "~/Content/foundation-datepicker.css",
+					  "~/Content/themes/base/autocomplete.css",
 					  "~/Content/Site.css"));
 		}
 	}

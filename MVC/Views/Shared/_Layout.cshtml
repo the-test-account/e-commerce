@@ -6,7 +6,7 @@
     <title>Book OnClick</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    
 </head>
 <body>
     @{
@@ -188,6 +188,22 @@
         @RenderSection("scripts", required: false)
 
         <script src="~/Scripts/slider.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+          
+                $("#form19 #search").autocomplete({
+                    source: '@Url.Action("GetBookTitle")',
+                    minLength: 2
+
+                });
+            });
+        })
+    </script>
+
+
+
+
 
 
 </body>
