@@ -41,16 +41,16 @@ namespace MVC.Controllers
 			return PartialView("_bookslist", model);
 		}
 
-        public PartialViewResult FullList()
-        {
-            var model = new StartPageViewModel();
+		public PartialViewResult FullList()
+		{
+			var model = new StartPageViewModel();
 
-            List<BookModel> books = new List<BookModel>();
-            apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks", "?");
-            model.BookList = CacheHelper.GetAllBooks();
-            model.TopFive = apiModelBook.TopFiveBooks;
-            return PartialView("_fullbookslist", model);
-        }
+			List<BookModel> books = new List<BookModel>();
+			apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks", "?");
+			model.BookList = CacheHelper.GetAllBooks();
+			model.TopFive = apiModelBook.TopFiveBooks;
+			return PartialView("_fullbookslist", model);
+		}
 
 		public ActionResult Details(int id)
 		{
@@ -65,11 +65,11 @@ namespace MVC.Controllers
 			return PartialView("_Details");
 		}
 
-		public ActionResult Contact()
+		public PartialViewResult Contact()
 		{
 			ViewBag.Message = "Your contact page.";
 
-			return View();
+			return PartialView("Contact");
 		}
 
 		public ActionResult About()
@@ -82,7 +82,7 @@ namespace MVC.Controllers
 		public JsonResult GetBookTitle(string term)
 		{
 			
-			var titles = CacheHelper.GetAllBooks().Where(b =>b.Title.ToLower().StartsWith(term.ToLower())).Select(b =>b.Title).ToList();
+			var titles = CacheHelper.GetAllBooks().Where(b =>b.Title.ToLower().Contains(term.ToLower())).Select(b =>b.Title).ToList();
 			return Json(titles, JsonRequestBehavior.AllowGet);
 
 		}

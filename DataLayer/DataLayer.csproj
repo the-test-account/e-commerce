@@ -120,7 +120,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DBScript\MagicBooksScript.sql" />
+    <Content Include="DBScript\BookOnClick.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

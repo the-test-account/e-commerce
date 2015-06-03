@@ -13,11 +13,11 @@
         var cart = Session["Cart"] as BusinessLayer.ShoppingCartModel;
 
     }
-    <div  class="logo">
+    <div >
+       
+        @Html.ActionLink("Home", "Index", "Home",null, new { @class="logo" })
         
-        
-            <a href="/Home/Index"><img src="~/Content/Images/logo small.png" /></a>
-    
+            
         
     </div>
 
@@ -39,103 +39,104 @@
                         <li class="divider"></li>
                         <li>@Html.ActionLink("Om Oss", "About", "Home")</li>
                         <li class="divider"></li>
-                        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                        <li>@Ajax.ActionLink("Kontakt", "Contact", "Home", null, new AjaxOptions { UpdateTargetId = "divList" })</li>
                         <li class="divider"></li>
-@using (Ajax.BeginForm("Search", "Home",
-                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }, new { @style="float:left;"}))
-{
-                        <li class="show-for-large-up">
-   
-
-        <a href="#" data-dropdown="mega-menu-1" class="kategori" data-options="is_hover:true">Välj kategori</a>
-
-        <div id="mega-menu-1" data-dropdown-content class="large f-dropdown content row">
-            <div class="large-4 columns">
-                <ul>
-                    <li><label>KATEGORIER A-H</label></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Barnböcker" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Biografier & Memoarer" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Datorer & IT" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Deckare" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Djur & Natur" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Ekonomi & Juridik" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Familj & Hälsa" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Filosofi & Religion" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Geografiska områden" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Hem & Trädgård" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Historia & Arkeologi" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Humor & Presentböcker" /></a></li>
+                        @using (Ajax.BeginForm("Search", "Home",
+                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }, null, new { @style = "float:left;" }))
+                        {
+                            <li class="show-for-large-up">
 
 
-                </ul>
-            </div>
-            <div class="large-4 columns">
-                <ul>
+                                <a href="#" data-dropdown="mega-menu-1" class="kategori" data-options="is_hover:true">Välj kategori</a>
 
-                    <li><label>KATEGORIER K-S</label></li>
-
-                    <li><a href="#"><input type="submit" class="menuopt" value="Kokböcker" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Konst & Musik" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Litteraturvetenskap" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Medicin" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Naturvetenskap & Teknik" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Ordböcker & Språk" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Psykologi & Pedagogik" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Resor & Geografi" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Samhälle & Politik" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Serier & Grafiska romaner" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Skönlitteratur" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Sport & Fritid" /></a></li>
-                </ul>
-            </div>
-            <div class="large-4 columns">
-                <ul>
+                                <div id="mega-menu-1" data-dropdown-content class="large f-dropdown content row">
+                                    <div class="large-4 columns">
+                                        <ul>
+                                            <li><label>KATEGORIER A-H</label></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Barnböcker" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Biografier & Memoarer" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Datorer & IT" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Deckare" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Djur & Natur" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Ekonomi & Juridik" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Familj & Hälsa" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Filosofi & Religion" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Geografiska områden" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Hem & Trädgård" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Historia & Arkeologi" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Humor & Presentböcker" /></a></li>
 
 
-                    <li><label>KATEGORIER S-U</label></li>
+                                        </ul>
+                                    </div>
+                                    <div class="large-4 columns">
+                                        <ul>
+
+                                            <li><label>KATEGORIER K-S</label></li>
+
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Kokböcker" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Konst & Musik" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Litteraturvetenskap" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Medicin" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Naturvetenskap & Teknik" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Ordböcker & Språk" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Psykologi & Pedagogik" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Resor & Geografi" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Samhälle & Politik" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Serier & Grafiska romaner" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Skönlitteratur" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Sport & Fritid" /></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="large-4 columns">
+                                        <ul>
+
+
+                                            <li><label>KATEGORIER S-U</label></li>
 
 
 
 
-                    <li><a href="#"><input type="submit" class="menuopt" value="Student" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Tonår & Unga vuxna" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Uppslagsverk" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Student" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Tonår & Unga vuxna" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Uppslagsverk" /></a></li>
 
-                    <li><label>FORMAT</label></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Inbunden" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="CD-skiva" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Häftad" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Danskt band" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Kartonnage" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="Pocket" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="" /></a></li>
-                    <li><a href="#"><input type="submit" class="menuopt" value="" /></a></li>
-                    <li ><a href="#" style="height:14px"><input type="submit" class="menuopt" value="" /></a></li>
-                   
-                </ul>
-            </div>
-        </div>
-                    </li>
+                                            <li><label>FORMAT</label></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Inbunden" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="CD-skiva" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Häftad" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Danskt band" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Kartonnage" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="Pocket" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="" /></a></li>
+                                            <li><a href="#"><input type="submit" class="menuopt" value="" /></a></li>
+                                            <li><a href="#" style="height:14px"><input type="submit" class="menuopt" value="" /></a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
                             @Html.Hidden("search", "")
-}
-                        <li class="divider" ></li>
-                        
-                      @using (Ajax.BeginForm("Search", "Home",
-                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }, new {@class="search-field" }))
-                      {
+                        }
+                        <li class="divider"></li>
 
-                        <li class="has-button search-field " >
-                            <input type="submit" class="small button search-field" value="Search" />
-                        </li>
-                        <li class="search">
-                          
-                            <input type="text" id="search" name="search" class="long" placeholder="Sök på titel, författare, format, ISBN, kategori eller språk ">
-                            
-                        </li>
-                      }
+                        @using (Ajax.BeginForm("Search", "Home",
+                            new AjaxOptions { UpdateTargetId = "divList", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }, new {@id = "sForm", @name = "sForm", @class = "search-field" }))
+                        {
 
-                        
+                            <li class="has-button search-field ">
+                                <input type="submit" class="small button search-field" value="Search" />
+                            </li>
+                            <li class="search">
+
+                                <input type="text" id="search" name="search" class="long" placeholder="Sök på titel, författare, format, ISBN, kategori eller språk ">
+
+                            </li>
+                        }
+
+
                     </ul>
+
                     <ul class="right">
 
 
@@ -192,7 +193,7 @@
         $(document).ready(function () {
             $(function () {
           
-                $("#form19 #search").autocomplete({
+                $("#sForm #search").autocomplete({
                     source: '@Url.Action("GetBookTitle")',
                     minLength: 2
 

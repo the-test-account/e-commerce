@@ -188,8 +188,14 @@ textarea {
    resize: none;
 }
 
-div.logo{
+.logo{
     margin-top:-50px;
+    background: url('Images/logo-small.png') no-repeat top left;
+     display: block;
+     width:200px;
+     height:89px;
+     text-indent: -9999px; /* hides the link text */
+
 }
 
 nav.custom{
@@ -277,7 +283,7 @@ hr {
 }
 @media only screen and (min-width: 64.0625em) {
     a.kategori {
-        width: 176px !important;
+        width: 200px !important;
     }
 }
      @media only screen and (min-width: 40.0625em){

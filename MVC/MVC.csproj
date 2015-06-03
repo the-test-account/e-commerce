@@ -146,7 +146,7 @@
     <Content Include="Content\foundation.css" />
     <Content Include="Content\foundation.min.css" />
     <Content Include="Content\Images\logo .png" />
-    <Content Include="Content\Images\logo small.png" />
+    <Content Include="Content\Images\logo-small.png" />
     <Content Include="Content\Images\offer4.jpg" />
     <Content Include="Content\Images\offer6.jpg" />
     <Content Include="Content\slick-theme.css" />
@@ -240,7 +240,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Admin\Adlibris.cshtml" />
     <Content Include="Views\Admin\BookInfo.cshtml" />
@@ -269,6 +268,7 @@
     <Content Include="Views\Admin\DeleteOrder.cshtml" />
     <Content Include="Views\Admin\DisplayOrder.cshtml" />
     <Content Include="Views\Shared\_fullbookslist.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
