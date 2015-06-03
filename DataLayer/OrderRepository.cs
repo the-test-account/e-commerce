@@ -39,7 +39,7 @@ namespace DataLayer
 		}
 		
 
-		public bool ProcessOrder(AddressModel address, ContactModel contact, ShoppingCartModel cart, int paymentId, int deliveryId)
+		public bool ProcessOrder(AddressModel address, ContactModel contact, ShoppingCartModel cart, int paymentId, int deliveryId, string comment)
 		{
 			var dbAddress = GetAddressByStreet(address);
 			var dbContact = GetContactBySocialSecurityNumber(dbAddress, contact);
@@ -59,6 +59,8 @@ namespace DataLayer
 						PaymentType = dbPaymentType,
 						TotalPrice = cart.GetCartTotal(),
 						OrderDate = DateTime.Now,
+						Comment = comment,
+						
 					};
 					context.Orders.Add(order);
 					context.SaveChanges();
@@ -183,11 +185,24 @@ namespace DataLayer
 		public void Delete(int id)
 		{
 			var orderToDelete = context.Orders.Find(id);
-			var orderDetails = context.OrderDetails.Where(d => d.BookId == id).ToList();
+			var orderDetails = context.OrderDetails.Where(d => d.OrderId == id).ToList();
+			try
+			{
+				foreach (var item in orderDetails)
+				{
+					var book = context.Books.Find(item.BookId);
+					book.QuantityInStock += item.QuantityOrdered;
+					context.OrderDetails.Remove(item);
+				}
+				context.Orders.Remove(orderToDelete);
+				context.SaveChanges();
+			}
+			catch (Exception e)
+			{
+				
+				throw;
+			}
 			
-			orderDetails.ForEach(i => context.OrderDetails.Remove(i));
-			context.Orders.Remove(orderToDelete);			
-			context.SaveChanges();
 		}
 
 		public Book SaveEditedOrder(OrderModel model, Order order)
@@ -217,6 +232,27 @@ namespace DataLayer
 			//book.Weight = model.Weight;
 
 			return null;
+		}
+
+		public OrderModel GetOrderById(int id)
+		{
+			var order = context.Orders.AsEnumerable().Where(o => o.Id == id).Select(o => new OrderModel
+			{
+				Id = o.Id,
+				AddressId = o.AddressId,
+				ContactId = o.ContactId,
+				DeliveryTypeId = o.DeliveryTypeId,
+				Comment = o.Comment,
+				OrderDate = o.OrderDate,
+				OrderNumber = o.OrderNumber,
+				PaymentTypeId = o.PaymentTypeId,
+				TotalPrice = o.TotalPrice,
+				Address = ConvertHelpers.Instance.ConvertDBAddressToModelAddress(o.Address),
+				Contact = ConvertHelpers.Instance.ConvertDBContactToModelContact(o.Contact, o.Address, o.AddressId),
+				DeliveryType = ConvertHelpers.Instance.ConvertDBLookupToModelLookup<DeliveryTypeModel, DeliveryType>(o.DeliveryType),
+				PaymentType = ConvertHelpers.Instance.ConvertDBLookupToModelLookup<PaymentTypeModel, PaymentType>(o.PaymentType),
+			}).FirstOrDefault();
+			return order;
 		}
 
 

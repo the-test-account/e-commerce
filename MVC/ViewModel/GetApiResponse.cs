@@ -18,6 +18,7 @@ namespace MVC.Models
 		public DisplayAdLibrisForBookModel BookForAdLibris { get; set; }
 
 		public BookModel Book { get; set; }
+		public OrderModel Order { get; set; }
 
 		public List<BookModel> Books { get; set; }
 
@@ -40,7 +41,7 @@ namespace MVC.Models
 				BaseAddress = new Uri(baseUri + path + id),
 				Timeout = TimeSpan.FromSeconds(60),
 			};
-
+			var test = baseUri + path + id;
 			try
 			{
 				HttpResponseMessage response = httpClient.GetAsync("").Result;
@@ -171,6 +172,11 @@ namespace MVC.Models
 			return Book;
 		}
 
+		public OrderModel GetOrderFromDbById(string path, int id)
+		{
+			Order = GetInfoFromWebApi(path, id.ToString()) as OrderModel;
+			return Order;
+		}
 		public List<BookModel> GetSuggestionFromBookIdFromDB(string path, int id)
 		{
 			BooksSuggestion = GetListInfoFromWebApi(path, id.ToString()) as List<BookModel>;
@@ -226,6 +232,12 @@ namespace MVC.Models
 		public async Task<bool> DeleteBook(string path, string id, BookModel book)
 		{
 			var result = await DeleteInfoFromWebApi(path, id, book);
+			return true;
+		}
+
+		public async Task<bool> DeleteOrder(string path, string id, OrderModel model)
+		{
+			var result = await DeleteInfoFromWebApi(path, id, model);
 			return true;
 		}
 	}
