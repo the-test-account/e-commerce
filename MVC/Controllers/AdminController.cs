@@ -24,12 +24,16 @@ namespace MVC.Controllers
 		}
 		public ActionResult EditBookList()
 		{
-			return View("ListBooks", apiModelOrder.GetAllOrdersFromDb("api/APIDbOrder"));
+
+			return View("ListBooks", CacheHelper.GetAllBooks());
+
 		}
 
 		public ActionResult EditOrderList()
 		{
-			return PartialView("ListOrders", CacheHelper.GetAllBooks());
+			return View("ListOrders", apiModelOrder.GetAllOrdersFromDb("api/APIDbOrder"));
+
+		
 		}
 
 		
