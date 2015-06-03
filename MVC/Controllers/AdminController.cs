@@ -11,11 +11,12 @@ namespace MVC.Controllers
 	{
 		private GetApiResponse<DisplayAdLibrisForBookModel> apiModelAdLibris;
 		private GetApiResponse<BookModel> apiModelBook;
+		private GetApiResponse<OrderModel> apiModelOrder;
 		public AdminController()
 		{
 			apiModelAdLibris = new GetApiResponse<DisplayAdLibrisForBookModel>();
 			apiModelBook = new GetApiResponse<BookModel>();
-
+			apiModelOrder = new GetApiResponse<OrderModel>();
 		}
 		public ActionResult Index()
 		{
@@ -23,16 +24,21 @@ namespace MVC.Controllers
 		}
 		public ActionResult EditBookList()
 		{
-			return View("ListBooksView", CacheHelper.GetAllBooks());
+			return View("ListBooks", apiModelOrder.GetAllOrdersFromDb("api/APIDbOrder"));
 		}
 
+		public ActionResult EditOrderList()
+		{
+			return PartialView("ListOrders", CacheHelper.GetAllBooks());
+		}
 
+		
 		public ActionResult GetInfoFromAdlibris(string isbn)
 		{
 			if (isbn != null)
 			{
 				apiModelAdLibris.BookForAdLibris = apiModelAdLibris.GetBookFromAdlibris(isbn, "api/APIAdLibris/");
-				return View("BookInfoView", apiModelAdLibris.BookForAdLibris);
+				return View("BookInfo", apiModelAdLibris.BookForAdLibris);
 			}
 			return View("Adlibris", apiModelAdLibris.BookForAdLibris);
 		}
@@ -46,7 +52,7 @@ namespace MVC.Controllers
 
 				if (model.AlreadyInDb)
 				{
-					return View("BookInfoView", model);
+					return View("BookInfo", model);
 				}
 
 				apiModelBook.SaveBookToDb("api/APIDbBook/", model);
@@ -87,7 +93,7 @@ namespace MVC.Controllers
 		public ActionResult Delete(int id)
 		{
 			var book = apiModelBook.GetBookFromDbById("api/APIDbBook/", id);
-			return View("DeleteBookView", book);
+			return View("DeleteBook", book);
 		}
 
 		

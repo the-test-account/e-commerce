@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using DataLayer;
+using Entities;
 using MVC.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,12 @@ namespace WebAPI.Controllers
 		{
 			repo = new OrderRepository();
 		}
+		public IQueryable<OrderModel> Get()
+		{
+			return repo.GetAllOrders().AsQueryable();
+		}
 
-		public bool Post([FromBody] OrderViewModel model)
+		public bool Post([FromBody] CreateOrderViewModel model)
 		{
 			
 			return repo.ProcessOrder(model.OrderInfo.Address, model.OrderInfo.Contact, model.Cart, model.OrderInfo.SelectedPaymentId, model.OrderInfo.SelectedDeliveryId);

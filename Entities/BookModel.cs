@@ -14,7 +14,6 @@ namespace Entities
 		{
 			this.Authors = new List<AuthorModel>();
 			this.Genres = new List<GenreModel>();
-			this.OrderDetails = new HashSet<OrderDetailsModel>();
 			this.Readers = new List<ReaderModel>();
 			
 		}
@@ -43,7 +42,6 @@ namespace Entities
 		public PublisherModel Publisher { get; set; }
 		public List<AuthorModel> Authors { get; set; }
 		public List<GenreModel> Genres { get; set; }
-		public virtual ICollection<OrderDetailsModel> OrderDetails { get; set; }
 		public List<ReaderModel> Readers { get; set; }
 		public SeriesModel Series { get; set; }
 		

@@ -20,7 +20,9 @@ namespace MVC.Models
 		public BookModel Book { get; set; }
 
 		public List<BookModel> Books { get; set; }
+
 		public List<BookModel> BooksSuggestion { get; set; }
+
 		public List<DeliveryTypeModel> Deliveries { get; set; }
 
 		public List<PaymentTypeModel> Payments { get; set; }
@@ -94,7 +96,6 @@ namespace MVC.Models
 			}
 			catch (Exception ex)
 			{
-				
 			}
 			return null;
 		}
@@ -150,10 +151,12 @@ namespace MVC.Models
 
 		public List<BookModel> GetAllBooksFromDb(string path)
 		{
-			List<BookModel> books = new List<BookModel>();
+			return GetListInfoFromWebApi(path, "") as List<BookModel>;
+		}
 
-			books = GetListInfoFromWebApi(path, "") as List<BookModel>;
-			return books;
+		public List<OrderModel> GetAllOrdersFromDb(string path)
+		{
+			return GetListInfoFromWebApi(path, "") as List<OrderModel>;
 		}
 
 		public List<PaymentTypeModel> GetAllPaymentsFromDb(string path)
@@ -191,7 +194,7 @@ namespace MVC.Models
 			SaveInfoToWebApi(path, model);
 		}
 
-		public void SaveOrderToDb(string path, OrderViewModel model)
+		public void SaveOrderToDb(string path, CreateOrderViewModel model)
 		{
 			SaveInfoToWebApi(path, model);
 		}
@@ -222,8 +225,7 @@ namespace MVC.Models
 
 		public async Task<bool> DeleteBook(string path, string id, BookModel book)
 		{
-
-			var result =await DeleteInfoFromWebApi(path, id, book);
+			var result = await DeleteInfoFromWebApi(path, id, book);
 			return true;
 		}
 	}

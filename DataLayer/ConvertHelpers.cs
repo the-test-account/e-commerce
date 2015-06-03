@@ -262,5 +262,32 @@ namespace DataLayer
 				};
 			}
 		}
+		public AddressModel ConvertDBAddressToModelAddress(Address address)
+		{
+			return new AddressModel
+			{
+				City = address.City,
+				Street=address.Street,
+				ZipCode=address.ZipCode
+			};
+		}
+
+		public ContactModel ConvertDBContactToModelContact(Contact contact, Address address, int addressId)
+		{
+			var modelAddress = ConvertDBAddressToModelAddress(address);
+			return new ContactModel
+			{
+				Address = modelAddress,
+				AddressId=addressId,
+				CellPhoneNumber=contact.CellPhoneNumber,
+				Email=contact.Email,
+				FirstName=contact.FirstName,
+				LastName=contact.LastName,
+				SocialSecurityNumber=contact.SocialSecurityNumber
+
+			};
+		}
+
+	
 	}
 }

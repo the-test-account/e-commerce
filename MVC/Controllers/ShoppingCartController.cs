@@ -88,7 +88,7 @@ namespace MVC.Controllers
 			if (ModelState.IsValid)
 			{
 				ShoppingCartModel cart = GetCart();
-				var model = new OrderViewModel
+				var model = new CreateOrderViewModel
 				{
 					Cart = cart,
 					OrderInfo = contactModel,
