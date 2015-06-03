@@ -100,7 +100,28 @@ namespace MVC.Controllers
 			return View("DeleteBook", book);
 		}
 
-		
+		public ActionResult DeleteOrder(int id)
+		{
+			var order = apiModelOrder.GetOrderFromDbById("api/APIDBOrder/", id);
+			return View("DeleteOrder", order);
+		}
+
+
+		[HttpPost]
+		public async Task<ActionResult> DeleteOrder(int id, OrderModel model)
+		{
+			try
+			{
+				await apiModelOrder.DeleteOrder("api/APIDbOrder/", id.ToString(), model);
+
+				return RedirectToAction("Index");
+			}
+			catch
+			{
+				return View();
+			}
+		}
+
 		[HttpPost]
 		public async Task<ActionResult> Delete(int id, BookModel model)
 		{
@@ -114,6 +135,18 @@ namespace MVC.Controllers
 			{
 				return View();
 			}
+		}
+
+		public ActionResult Details(int id)
+		{
+			if (id > 0)
+			{
+
+				var order = apiModelOrder.GetOrderFromDbById("api/APIDbOrder/", id);
+				
+				return View("DisplayOrder", order);
+			}
+			return View("ListOrders");
 		}
 	}
 }

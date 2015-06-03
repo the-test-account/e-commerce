@@ -26,11 +26,29 @@ namespace WebAPI.Controllers
 			return repo.GetAllOrders().AsQueryable();
 		}
 
+		public OrderModel Get(int id)
+		{
+			try
+			{
+				return repo.GetOrderById(id);
+				
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
 		public bool Post([FromBody] CreateOrderViewModel model)
 		{
 			
 			return repo.ProcessOrder(model.OrderInfo.Address, model.OrderInfo.Contact, model.Cart, model.OrderInfo.SelectedPaymentId, model.OrderInfo.SelectedDeliveryId);
 			
+		}
+
+		public void Delete(int id)
+		{
+			repo.Delete(id);
 		}
 
 		

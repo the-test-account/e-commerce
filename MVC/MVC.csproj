@@ -227,8 +227,10 @@
     <Content Include="Views\Admin\ListBooks.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\_Suggestions.cshtml" />
-    <Content Include="Views\Admin\OrderDetails.cshtml" />
+    <Content Include="Views\Admin\AdminOrderDetails.cshtml" />
     <Content Include="Views\Admin\ListOrders.cshtml" />
+    <Content Include="Views\Admin\DeleteOrder.cshtml" />
+    <Content Include="Views\Admin\DisplayOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
