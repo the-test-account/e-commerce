@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace MVC.Controllers
 {
@@ -65,6 +66,14 @@ namespace MVC.Controllers
 		   
 
 			return View();
+		}
+
+		public JsonResult GetBookTitle(string term)
+		{
+			
+			var titles = CacheHelper.GetAllBooks().Where(b =>b.Title.ToLower().StartsWith(term.ToLower())).Select(b =>b.Title).ToList();
+			return Json(titles, JsonRequestBehavior.AllowGet);
+
 		}
 		[HttpPost]
 		public ActionResult Search(string search)
