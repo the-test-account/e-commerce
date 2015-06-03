@@ -1,109 +1,110 @@
 ﻿@model MVC.ViewModel.ShoppingCartViewModel
 
-<div id="divList">
+
     <div class="row">
-        <h2>Varukorg</h2>
-    
-
-        <div class="large-12 columns">
+        <div id="divList">
+           
 
 
-            <table style="width:100%">
-                <thead>
-                    <tr>
+            <div class="large-12 columns">
+                <h2>Varukorg</h2>
 
-                        <th>
-                            Vara
-                        </th>
+                <table style="width:100%">
+                    <thead>
+                        <tr>
 
-                        <th>
-                            Antal
-                        </th>
-                        <th>
-                            Pris
-                        </th>
-                        <th>
-                            Delsumma
-                        </th>
-                    </tr>
-                </thead>
-                @foreach (var item in Model.Cart.Items)
-                {
-                    <tr>
-                        <td>
-                            @item.Book.Title
-                            <div style="padding:5px">
-                                @using (Ajax.BeginForm("RemoveFromCart", "ShoppingCart", null,
+                            <th>
+                                Vara
+                            </th>
+
+                            <th>
+                                Antal
+                            </th>
+                            <th>
+                                Pris
+                            </th>
+                            <th>
+                                Delsumma
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.Cart.Items)
+                    {
+                        <tr>
+                            <td>
+                                @item.Book.Title
+                                <div style="padding:5px">
+                                    @using (Ajax.BeginForm("RemoveFromCart", "ShoppingCart", null,
                 new AjaxOptions { UpdateTargetId = "divList", OnSuccess = "reloadWidget" }, new { @id = "removeForm" }))
+                                    {
+
+                                        @Html.Hidden("Id", item.Book.Id)
+                                        @Html.HiddenFor(x => x.ReturnUrl)
+                                        <button class="delete " type="submit"><i class="fa fa-times" style="margin:5px; "></i>Ta bort</button>
+                                        @*<input type="submit" class="icon-remove-sign" />*@
+
+                                    }
+                                </div>
+
+
+                            </td>
+
+
+                            <td style="width:20px; ">
+                                @using (Ajax.BeginForm("EditQuantity", "ShoppingCart", null,
+                new AjaxOptions { UpdateTargetId = "divList", OnSuccess = "reloadWidget" }, new { @id = "quantityForm" }))
                                 {
+
+
+                                    if (item.IsNotInStock)
+                                    {
+                                        <span>Tyvärr finns det bara @item.Book.QuantityInStock i lager</span>
+                                        item.Quantity = item.Book.QuantityInStock;
+                                        @Html.TextBox("quantity", item.Quantity, new { type = "number", min = "1" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBox("quantity", item.Quantity, new { type = "number", min = "1" })
+                                    }
 
                                     @Html.Hidden("Id", item.Book.Id)
                                     @Html.HiddenFor(x => x.ReturnUrl)
-                                    <button class="delete " type="submit"><i class="fa fa-times" style="margin:5px; "></i>Ta bort</button>
-                                    @*<input type="submit" class="icon-remove-sign" />*@
+
+
+                                    <input type="submit" class="small button" value="Uppdatera" />
 
                                 }
-                            </div>
+                            </td>
+
+                            <td>
+                                @item.Book.Price.ToString("0.00")
+                            </td>
+                            <td>
+                                @((item.Quantity * item.Book.Price).ToString("0.00"))
+                            </td>
+
+                        </tr>
+                    }
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-right">
+                                Summa:
+                            </td>
+                            <td class="text-right">
+                                @Model.Cart.GetCartTotal().ToString("0.00")
 
 
-                        </td>
-
-
-                        <td style="width:20px; ">
-                            @using (Ajax.BeginForm("EditQuantity", "ShoppingCart", null,
-                new AjaxOptions { UpdateTargetId = "divList", OnSuccess = "reloadWidget" }, new { @id = "quantityForm" }))
-                            {
-
-
-                                if (item.IsNotInStock)
-                                {
-                                    <span>Tyvärr finns det bara @item.Book.QuantityInStock i lager</span>
-                                    item.Quantity = item.Book.QuantityInStock;
-                                    @Html.TextBox("quantity", item.Quantity, new { type = "number", min = "1" })
-                                }
-                                else
-                                {
-                                    @Html.TextBox("quantity", item.Quantity, new { type = "number", min = "1" })
-                                }
-
-                                @Html.Hidden("Id", item.Book.Id)
-                                @Html.HiddenFor(x => x.ReturnUrl)
-
-
-                                <input type="submit" class="small button" value="Uppdatera" />
-
-                            }
-                        </td>
-
-                        <td>
-                            @item.Book.Price.ToString("0.00")
-                        </td>
-                        <td>
-                            @((item.Quantity * item.Book.Price).ToString("0.00"))
-                        </td>
-
-                    </tr>
-                }
-                <tfoot>
-                    <tr>
-                        <td colspan="3" class="text-right">
-                            Summa:
-                        </td>
-                        <td class="text-right">
-                            @Model.Cart.GetCartTotal().ToString("0.00")
-
-
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-            <div class="text-center">
-                @Ajax.ActionLink("Fortsätt handla", "ReloadStartPage", "Home", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button" })
-                @Ajax.ActionLink("Gå till kassan", "OrderDetails", "ShoppingCart", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button" })
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="text-center">
+                    @Ajax.ActionLink("Fortsätt handla", "ReloadStartPage", "Home", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button" })                 
+                    @Ajax.ActionLink("Gå till kassan", "OrderDetails", "ShoppingCart", null, new AjaxOptions { UpdateTargetId = "divList" }, new { @class = "button" })
+                </div>
             </div>
+
+
         </div>
-
-
-    </div>
 </div>
 
