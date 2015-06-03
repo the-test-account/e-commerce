@@ -89,7 +89,9 @@ namespace BusinessLayer
 			description = description.Substring(start + 1, (end) - start - 1);
 			description = Helper.StripTagsCharArray(description);
 			description = Helper.HandleSpecialChars(description);
-			return Helper.AddSpacesToSentence(description, true);
+			description= Helper.AddSpacesToSentence(description, true);
+			description = description.Trim();
+			return description;
 		}
 
 		public static string GetSeries()
@@ -213,7 +215,7 @@ namespace BusinessLayer
 			tag = tag.Substring(0, end);
 			start = tag.IndexOf(">");
 			price = tag.Substring(start + 1);
-			return price;
+			return int.Parse(price).ToString();
 		}
 
 		public static string GetLanguage()
