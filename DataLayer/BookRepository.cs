@@ -416,14 +416,14 @@ namespace DataLayer
 		{
 			book.Id = model.Id;
 			book.Authors = ConvertModelAuthorToDBAuthor(model.Id);
-			book.Publisher = GetPublisherByName(model.Publisher.Name);
+			book.Publisher = GetPublisherByName(book.Publisher.Name);
 			book.Genres = ConvertModelGenreToDBGenre(model.Id);
 			if (model.Readers != null)
 			{
 				book.Readers = ConvertModelReaderToDBReader(model.Id);
 			}
-			book.Format = GetFormatByName(model.Format.Name);
-			book.Language = GetLanguageByName(model.Language.Name);
+			book.Format = GetFormatByName(book.Format.Name);
+			book.Language = GetLanguageByName(book.Language.Name);
 			if (model.Series != null)
 			{
 				book.Series = GetSeriesByName(model.Series.Name);
