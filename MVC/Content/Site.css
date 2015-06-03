@@ -300,3 +300,21 @@ hr {
         width:146px !important;
     }
      }
+
+     table.orderlist{
+         margin-left:150px;
+         /*border:medium;*/
+         margin-top:20px;
+         border-collapse:collapse;
+       
+        
+     }
+
+     table.orderlist tr:hover {
+          background-color: #B0E2FF;
+       
+        
+     }
+
+       
+    
