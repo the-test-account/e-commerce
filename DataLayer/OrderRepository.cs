@@ -39,7 +39,7 @@ namespace DataLayer
 		}
 		
 
-		public bool ProcessOrder(AddressModel address, ContactModel contact, ShoppingCartModel cart, int paymentId, int deliveryId)
+		public bool ProcessOrder(AddressModel address, ContactModel contact, ShoppingCartModel cart, int paymentId, int deliveryId, string comment)
 		{
 			var dbAddress = GetAddressByStreet(address);
 			var dbContact = GetContactBySocialSecurityNumber(dbAddress, contact);
@@ -59,6 +59,8 @@ namespace DataLayer
 						PaymentType = dbPaymentType,
 						TotalPrice = cart.GetCartTotal(),
 						OrderDate = DateTime.Now,
+						Comment = comment,
+						
 					};
 					context.Orders.Add(order);
 					context.SaveChanges();

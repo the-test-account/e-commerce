@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
 		public bool Post([FromBody] CreateOrderViewModel model)
 		{
 			
-			return repo.ProcessOrder(model.OrderInfo.Address, model.OrderInfo.Contact, model.Cart, model.OrderInfo.SelectedPaymentId, model.OrderInfo.SelectedDeliveryId);
+			return repo.ProcessOrder(model.OrderInfo.Address, model.OrderInfo.Contact, model.Cart, model.OrderInfo.SelectedPaymentId, model.OrderInfo.SelectedDeliveryId, model.OrderInfo.Comment);
 			
 		}
 

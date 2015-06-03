@@ -61,7 +61,7 @@ namespace MVC.Controllers
 
 				apiModelBook.SaveBookToDb("api/APIDbBook/", model);
 				CacheHelper.ReloadCache();
-				return RedirectToAction("Index", "Home");
+				return RedirectToAction("Index", "Admin");
 			}
 
 			return RedirectToAction("GetInfoFromAdlibris", model);
