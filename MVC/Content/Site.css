@@ -361,7 +361,8 @@ hr {
 .ab input, textarea {
     width:600px;
     height:200px;
-    text-align:justify;
+    vertical-align: top;
+
     
 }
 

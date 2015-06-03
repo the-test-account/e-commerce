@@ -44,11 +44,7 @@ namespace DataLayer
 			return newlist;
 		}
 
-		//public List<T> Test<T, U>(List<U> model)
-		//{
-		//	return newlist;
-		//}
-
+		
 		public T ConvertModelLookupToDBLookup<T, U>(U model)
 			where T : IDBLookup, new()
 			where U : IDBLookup
