@@ -1,4 +1,10 @@
 ﻿@model Entities.BookModel
+
+@{
+    var shortDate = Model.PublishingDate.ToShortDateString();
+    var intPrice = Convert.ToInt32(Model.Price).ToString();
+}
+
 <div class="row">
     @using (Html.BeginForm())
     {
@@ -6,7 +12,7 @@
         <br />
         <div class="form-horizontal">
             <h4>Vald bok:</h4>
-           
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
 
@@ -42,59 +48,58 @@
                     @Html.ValidationMessageFor(model => model.PageNumber, "", new { @class = "text-danger" })
                 </div>
             </div>
-            
-                <div class="form-group big-box ">
-                    @Html.LabelFor(model => model.PublishingDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10 a" >
-                        @Html.EditorFor(model => model.PublishingDate.ToShortDateString(), new { htmlAttributes = new { @class = "big-box", @style = "height:50px;" } })
-                        @Html.ValidationMessageFor(model => model.PublishingDate, "", new { @class = "text-danger" })
-                    </div>
+
+            <div class="form-group big-box ">
+                @Html.LabelFor(model => model.PublishingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 a">
+                    <input type="text" id="PublishingDate" name="PublishingDate" value="@shortDate" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.PublishingDate, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
 
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10 a">
-                        @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 a">
+                    @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10 a">
-                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } }) 
-                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 a">
+                    <input type="text" id="Price" name="Price" value="@intPrice" class="form-control" />
+                             
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10 ab">
-                    <textarea rows="2" cols="20" wrap="hard" id="Description" name="Description" style="min-height:200px">
-                        @Model.Description
-                    </textarea>
+                    <textarea rows="2" cols="20" wrap="hard" id="Description" name="Description" style="min-height:200px">@Model.Description</textarea>
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "error" })
                 </div>
             </div>
-                
-                <div class="form-group">
-                    @Html.LabelFor(model => model.QuantityInStock, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10 a">
-                        @Html.EditorFor(model => model.QuantityInStock, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.QuantityInStock, "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
-               
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Uppdatera" class="small button" />
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuantityInStock, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 a">
+                    @Html.EditorFor(model => model.QuantityInStock, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.QuantityInStock, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Uppdatera" class="small button" />
+                </div>
+            </div>
+        </div>
     }
 
     <div>
