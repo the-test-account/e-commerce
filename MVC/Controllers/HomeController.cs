@@ -41,6 +41,17 @@ namespace MVC.Controllers
 			return PartialView("_bookslist", model);
 		}
 
+        public PartialViewResult FullList()
+        {
+            var model = new StartPageViewModel();
+
+            List<BookModel> books = new List<BookModel>();
+            apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks", "?");
+            model.BookList = CacheHelper.GetAllBooks();
+            model.TopFive = apiModelBook.TopFiveBooks;
+            return PartialView("_fullbookslist", model);
+        }
+
 		public ActionResult Details(int id)
 		{
 			if (id > 0)

@@ -338,8 +338,8 @@ hr {
 }
 .payment  {
  width:280px;
-  float:left!important;
-  margin-right:20px;
+  
+  /*margin-right:20px;*/
 }
 
 .delivery select  {
@@ -347,7 +347,29 @@ hr {
   
 }
 
+
+
 .comment textarea {
      max-width:580px;
      display:block;
+}
+
+.a input {
+   max-width:600px;
+}
+
+
+.ab input, textarea {
+    width:600px;
+    height:200px;
+    text-align:justify;
+    
+}
+
+.payment span.error, small.error {
+    float:left !important;
+}
+
+.v span.error, small.error {
+    float:left !important;
 }

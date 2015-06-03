@@ -3,86 +3,102 @@
 @{
     ViewBag.Title = "Radera order";
 }
+<div class="row">
+    
 
-<h2>Radera order</h2>
+    <h3>Är du säker på att du vill radera?</h3>
+    <div>
 
-<h3>Är du säker på att du vill radera?</h3>
-<div>
-    <h4>OrderModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressId)
-        </dt>
+        <table class="orderlist" style="margin-left:0px">
+            <tr>
+                <td>
+                   Adress:
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressId)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.Address.Street)
+                    @Html.DisplayFor(model => model.Address.City)
+                    @Html.DisplayFor(model => model.Address.ZipCode)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   Kontakt uppgift:
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactId)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.Contact.FirstName)
+                    @Html.DisplayFor(model => model.Contact.LastName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Kommentar:
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.ContactId)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.Comment)
+                </td>
+            </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Comment)
-        </dt>
+            <tr>
+                <td>
+                    Order datum:
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Comment)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.OrderDate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Order nummer:
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderDate)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.OrderNumber)
+                </td>
+            </tr>
+            <tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrderDate)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderNumber)
-        </dt>
+                <td>
+                    Totallt summa:
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrderNumber)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.TotalPrice)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Leveranssätt:
+                </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </dt>
+                <td>
+                    @Html.DisplayFor(model => model.DeliveryType.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Betalningssätt:
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.TotalPrice)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.PaymentType.Name)
+                </td>
+            </tr>
+            
+            </table>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveryTypeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryTypeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PaymentTypeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaymentTypeId)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Tillbaka", "Index")
-        </div>
-    }
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="button" /> 
+                         
+                        </div>
+                    }
+</div>
+    @Html.ActionLink("Tillbaka", "Index")
 </div>

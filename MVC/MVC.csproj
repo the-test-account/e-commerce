@@ -268,6 +268,7 @@
     <Content Include="Views\Admin\ListOrders.cshtml" />
     <Content Include="Views\Admin\DeleteOrder.cshtml" />
     <Content Include="Views\Admin\DisplayOrder.cshtml" />
+    <Content Include="Views\Shared\_fullbookslist.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

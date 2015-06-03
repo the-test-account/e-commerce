@@ -4,12 +4,12 @@
     var cart = Session["Cart"] as BusinessLayer.ShoppingCartModel;
 
 }
-<div id="divList" class="row" >
+<div id="divList" class="row">
 
-    <div class="large-10 columns">
+    <div class="large-12 columns">
 
-        <div class="section-container tabs" data-section >
-            <section class="section" >
+        <div class="section-container tabs" data-section>
+            <section class="section">
                 <h5 class="title" style="margin-left:0px"><a href="#panel2">Nyheter</a></h5>
                 <div class="content" data-slug="panel2">
                     @if (Model.ErrorInSearchResult)
@@ -22,9 +22,9 @@
                     }
                     else
                     {
-                        <ul class="large-block-grid-5">
+                        <ul class="large-block-grid-6">
 
-                            @foreach (var item in Model.BookList.Take(10))
+                            @foreach (var item in Model.BookList)
                             {
                                 int bookInCart = 0;
                                 if (cart != null)
@@ -79,11 +79,6 @@
                 </div>
             </section>
         </div>
-       @Ajax.ActionLink("Alla böcker >>", "FullList", "Home", null,
-                    new AjaxOptions { UpdateTargetId = "divList" }, new { @type = "label", style="padding-left:700px"}) 
     </div>
    
-<div class="large-2 columns">
-    @Html.Partial("_topFiveBooks")
-</div>
 </div>
