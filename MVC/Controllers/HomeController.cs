@@ -24,7 +24,7 @@ namespace MVC.Controllers
 		{
 			var model = new StartPageViewModel();
 			apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks", "?");
-			model.BookList = CacheHelper.GetAllBooks();
+			model.BookList = CacheHelper.GetAllBooks("0","0");
 			model.TopFive = apiModelBook.TopFiveBooks;
 
 			return View(model);
@@ -36,7 +36,7 @@ namespace MVC.Controllers
 
 			List<BookModel> books = new List<BookModel>();
 			apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks", "?");
-			model.BookList = CacheHelper.GetAllBooks();
+			model.BookList = CacheHelper.GetAllBooks("0", "0");
 			model.TopFive = apiModelBook.TopFiveBooks;			
 			return PartialView("_bookslist", model);
 		}
@@ -47,7 +47,7 @@ namespace MVC.Controllers
 
 			List<BookModel> books = new List<BookModel>();
 			apiModelBook.TopFiveBooks = apiModelBook.GetTopFiveBooksFromDb("api/APIDbTopFiveBooks", "?");
-			model.BookList = CacheHelper.GetAllBooks();
+			model.BookList = CacheHelper.GetAllBooks("0", "20");
 			model.TopFive = apiModelBook.TopFiveBooks;
 			return PartialView("_fullbookslist", model);
 		}
@@ -71,7 +71,13 @@ namespace MVC.Controllers
 
 			return View();
 		}
-
+		public PartialViewResult PageJump(int pageNr)
+		{
+			var model = new StartPageViewModel();
+			var nr = ((pageNr * 20)-20).ToString();
+			model.BookList = CacheHelper.GetAllBooks(nr,"20");
+			return PartialView("_fullbookslist", model);
+		}
 		public ActionResult About()
 		{
 		   
@@ -81,8 +87,8 @@ namespace MVC.Controllers
 
 		public JsonResult GetBookTitle(string term)
 		{
-			
-			var titles = CacheHelper.GetAllBooks().Where(b =>b.Title.ToLower().Contains(term.ToLower())).Select(b =>b.Title).ToList();
+
+			var titles = CacheHelper.GetAllBooks("0", "0").Where(b => b.Title.ToLower().Contains(term.ToLower())).Select(b => b.Title).ToList();
 			return Json(titles, JsonRequestBehavior.AllowGet);
 
 		}

@@ -40,6 +40,11 @@
     $(".adminLink").click(function () {
      
     });
+    setActiveColor = function (control) {
+        $("#page" +control).addClass("active");
+        console.log(control)
+    }
+
 
 
 

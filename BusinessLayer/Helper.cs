@@ -223,6 +223,7 @@ namespace BusinessLayer
 			tempCat = tempCat.Replace("&#228;", "ä");
 			tempCat = tempCat.Replace("&#246;", "ö");
 			tempCat = tempCat.Replace("&#229;", "å");
+			tempCat = tempCat.Replace("&#149;", "*");
 			return tempCat;
 		}
 	}

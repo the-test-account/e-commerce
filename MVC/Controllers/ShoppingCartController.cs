@@ -33,7 +33,7 @@ namespace MVC.Controllers
 		public PartialViewResult AddToCartWidget(int id, string returnUrl)
 		{
 			List<BookModel> books = new List<BookModel>();
-			books = CacheHelper.GetAllBooks();
+			books = CacheHelper.GetAllBooks("0", "0");
 
 			var book = books.Find(b => b.Id == id);
 			if (book != null)

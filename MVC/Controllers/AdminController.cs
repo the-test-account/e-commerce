@@ -25,7 +25,7 @@ namespace MVC.Controllers
 		public ActionResult EditBookList()
 		{
 
-			return View("ListBooks", CacheHelper.GetAllBooks());
+			return View("ListBooks", CacheHelper.GetAllBooks("0", "0"));
 
 		}
 

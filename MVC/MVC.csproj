@@ -269,6 +269,7 @@
     <Content Include="Views\Admin\DisplayOrder.cshtml" />
     <Content Include="Views\Shared\_fullbookslist.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\_pagination.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

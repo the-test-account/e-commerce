@@ -1,0 +1,25 @@
+﻿@using MVC.ViewModel
+@model MVC.ViewModel.StartPageViewModel
+
+@{
+    int totalPageNumber = MVC.Models.CacheHelper.BookCount;
+    int currPage = 0;
+}
+@if (MVC.Models.CacheHelper.BookCount >= 20)
+{
+    totalPageNumber = MVC.Models.CacheHelper.BookCount / 20;
+}
+
+<div>
+
+    @for (int i = 0; i < totalPageNumber; i++)
+    {
+        currPage = (i + 1);
+        <span class="pagIn">
+          
+            @Ajax.ActionLink((currPage).ToString(), "PageJump", "Home", new { pageNr = currPage},
+            new AjaxOptions { UpdateTargetId = "divList", OnComplete = "setActiveColor(" + currPage + ")" },new { Id = "page" + currPage })
+        </span>
+    }
+
+</div>
